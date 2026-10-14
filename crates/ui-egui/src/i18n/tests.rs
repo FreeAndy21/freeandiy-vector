@@ -429,7 +429,7 @@ pub fn tl_literals() -> std::collections::BTreeSet<String> {
                         end += 1;
                     }
                     let lit = rest.get(..end).unwrap_or("").replace("\\\"", "\"");
-                    if rest.get(end + 1..end + 2) == Some(")") {
+                    if rest.get(end + 1..).is_some_and(|after| after.trim_start().starts_with(')')) {
                         literals.insert(lit);
                     }
                 }
