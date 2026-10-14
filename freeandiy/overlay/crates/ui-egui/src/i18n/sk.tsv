@@ -1,0 +1,502 @@
+# Slovak (sk) catalog. Added by FreeANDIY (Free Andy Agency), 2026; MIT OR Apache-2.0 like the
+# other catalogs. Columns, separated by a TAB:  context <TAB> source <TAB> translation
+#
+#   context  empty                a plain UI string; `source` is the English text in the code
+#            @id                  a command id (e.g. file.saveAs): wins over the English text
+#            @plural              `source` is "one|other"; the translation lists the Slovak forms
+#                                 "one|few|other" (1 | 2–4 | 0, 5+), see `plural_czech` in i18n/mod.rs
+#            anything else        a disambiguating context passed to `tr_ctx`
+#   escapes  \n  \t  \\  inside a column. `{name}` placeholders must appear in both columns.
+#   lines starting with # and blank lines are ignored.
+#
+# Clean-room: every entry was written from the plain meaning of the English label using ordinary
+# Slovak computing vocabulary (vrstva, výber, štetec, cesta, kotviaci bod, výkres, krytie ...). No
+# proprietary localisation resource, string table or product UI was consulted or copied; in
+# particular not the Slovak localisation of any commercial vector editor. Add entries the same way.
+# Conventions: menus are nouns (Súbor, Úpravy, Objekt ...), commands are infinitives or nouns
+# (Otvoriť…, Uložiť ako…), sentence case as in the English source. Product and technology names
+# ({{this.name}}, OpenType, CMYK, Lab ...) stay in Latin letters; the trailing "…" of dialog
+# commands is kept.
+#
+# Coverage: the menu bar (menus, submenus and their items) and the common strings shared with
+# the other FreeANDIY apps. Everything else falls back to English until translated.
+
+# Shared with FreeANDIY Photo
+	File	Súbor
+	Export	Exportovať
+	Scripts	Skripty
+	Edit	Úpravy
+	Transform	Transformovať
+	Presets	Predvoľby
+	Preferences	Nastavenia
+	Image	Obraz
+	Variables	Premenné
+	Layer	Vrstva
+	New	Nový
+	Delete	Odstrániť
+	Rasterize	Rastrovať
+	Arrange	Usporiadať
+	Align	Zarovnať
+	Distribute	Rozmiestniť
+	Type	Text
+	Panels	Panely
+	Anti-Alias	Vyhladzovanie
+	Orientation	Orientácia
+	Font Preview Size	Veľkosť náhľadu písma
+	Language Options	Jazykové možnosti
+	Select	Výber
+	Modify	Upraviť
+	Blur	Rozostrenie
+	Distort	Deformácia
+	Noise	Šum
+	Pixelate	Pixelizácia
+	Sharpen	Zaostrenie
+	Stylize	Štylizácia
+	Video	Video
+	View	Zobraziť
+	Proof Setup	Nastavenie náhľadu tlače
+	Screen Mode	Režim obrazovky
+	Show	Zobraziť
+	Window	Okno
+	Workspace	Pracovná plocha
+	Help	Pomocník
+	New…	Nový…
+	Open…	Otvoriť…
+	Close	Zavrieť
+	Close All	Zavrieť všetko
+	Save	Uložiť
+	Save As…	Uložiť ako…
+	Save a Copy…	Uložiť kópiu…
+	Revert	Vrátiť na uložené
+	Package…	Zbaliť…
+	File Info…	Informácie o súbore…
+	Print…	Tlačiť…
+	Exit	Ukončiť
+	Export As…	Exportovať ako…
+	Undo	Späť
+	Redo	Znova
+	Cut	Vystrihnúť
+	Copy	Kopírovať
+	Paste	Prilepiť
+	Clear	Vymazať
+	Check Spelling…	Kontrola pravopisu…
+	Puppet Warp	Bábková deformácia
+	Free Transform	Voľná transformácia
+	Color Settings…	Nastavenie farieb…
+	Assign Profile…	Priradiť profil…
+	Keyboard Shortcuts…	Klávesové skratky…
+	Auto Color	Automatické farby
+	Crop	Orezať
+	Trap…	Presah farieb…
+	Create Clipping Mask	Vytvoriť orezovú masku
+	Merge Layers	Zlúčiť vrstvy
+	Convert to Shape	Previesť na tvar
+	All	Všetko
+	Deselect	Zrušiť výber
+	Reselect	Znova vybrať
+	All Layers	Všetky vrstvy
+	Save Selection…	Uložiť výber…
+	Proof Colors	Náhľad farieb tlače
+	Gamut Warning	Upozornenie na farebný rozsah
+	Zoom In	Priblížiť
+	Zoom Out	Oddialiť
+	Fit on Screen	Prispôsobiť obrazovke
+	Flip Horizontal	Prevrátiť vodorovne
+	Rulers	Pravítka
+	Lock Guides	Zamknúť vodidlá
+	Clear Guides	Vymazať vodidlá
+	Lock Slices	Zamknúť rezy
+	Grid	Mriežka
+	Guides	Vodidlá
+	Rotate View	Otočiť zobrazenie
+	Actions	Akcie
+	Brushes	Štetce
+	Character	Znak
+	Character Styles	Štýly znakov
+	Color	Farba
+	Glyphs	Glyfy
+	Gradients	Prechody
+	History	História
+	Info	Informácie
+	Layers	Vrstvy
+	Navigator	Navigátor
+	Paragraph	Odstavec
+	Paragraph Styles	Štýly odstavcov
+	Paths	Cesty
+	Properties	Vlastnosti
+	Shapes	Tvary
+	Swatches	Vzorkovník
+	Options	Možnosti
+	Tools	Nástroje
+	Change Panel Layout	Zmeniť rozloženie panelov
+	Move Panel	Presunúť panel
+	Float Panel	Uvoľniť panel
+	Dock Panel	Ukotviť panel
+	Activate Panel	Aktivovať panel
+	Close Panel	Zavrieť panel
+	Scale	Mierka
+	Rotate	Otočiť
+	Skew	Skosiť
+	Perspective	Perspektíva
+	{{this.name}} on GitHub	{{this.name}} na GitHube
+	About {{this.name}}	O aplikácii {{this.name}}
+	OK	OK
+	Cancel	Zrušiť
+	Apply	Použiť
+	Reset	Obnoviť
+	Create	Vytvoriť
+	Saved	Uložené
+	Error	Chyba
+	Preview	Náhľad
+	Don't Save	Neukladať
+	Width	Šírka
+	Height	Výška
+	Color Mode	Farebný režim
+	Background Contents	Obsah pozadia
+	White	Biela
+	Black	Čierna
+	Transparent	Priehľadné
+	RGB Color	Farby RGB
+	CMYK Color	Farby CMYK
+	Grayscale	Odtiene sivej
+	Save Preset…	Uložiť predvoľbu…
+	Preset Name	Názov predvoľby
+	PRESET DETAILS	PODROBNOSTI PREDVOĽBY
+	Recent	Nedávne
+	Clear Recent Files	Vymazať nedávne súbory
+	About	O aplikácii
+	Contributors	Prispievatelia
+	Models	Modely
+	8 bit	8-bitový
+	16 bit	16-bitový
+	Amount	Množstvo
+	Contrast	Kontrast
+	Expand…	Rozšíriť…
+	Feather	Prelínanie
+	Feather…	Prelínanie…
+	Selection	Výber
+	Output	Výstup
+	Radius	Polomer
+	Smooth	Vyhladiť
+	Balance	Vyváženie
+	Blue	Modrá
+	Effects	Efekty
+	Global	Globálne
+	Grain	Zrno
+	Green	Zelená
+	Hue	Odtieň
+	Light	Svetlo
+	Magenta	Purpurová
+	Open	Otvoriť
+	Orange	Oranžová
+	Purple	Fialová
+	Red	Červená
+	Saturation	Sýtosť
+	Size	Veľkosť
+	Temperature	Teplota
+	Texture	Textúra
+	Tint	Nádych
+	Yellow	Žltá
+	Tolerance	Tolerancia
+
+# Menus and submenus
+	New from Template…	Nový zo šablóny…
+	Open Recent Files	Otvoriť nedávne súbory
+	Recent File	Nedávny súbor
+	Show in Folder	Zobraziť v priečinku
+	Save as Template…	Uložiť ako šablónu…
+	Save as PDF…	Uložiť ako PDF…
+	Save for Office Documents…	Uložiť pre kancelárske dokumenty…
+	Place…	Umiestniť…
+	Export for Screens…	Exportovať pre obrazovky…
+	Export As SVG…	Exportovať ako SVG…
+	Export As PNG…	Exportovať ako PNG…
+	Save for Web (Legacy)…	Uložiť pre web (staršie)…
+	Export Selection…	Exportovať výber…
+	Check Script…	Skontrolovať skript…
+	Other Script…	Iný skript…
+	Document Setup…	Nastavenie dokumentu…
+	Document Color Mode	Farebný režim dokumentu
+	Paste in Front	Prilepiť dopredu
+	Paste in Back	Prilepiť dozadu
+	Paste in Place	Prilepiť na miesto
+	Paste on All Artboards	Prilepiť na všetky výkresy
+	Paste without Formatting	Prilepiť bez formátovania
+	Find and Replace…	Nájsť a nahradiť…
+	Find Next	Nájsť ďalšie
+	Spelling	Pravopis
+	Auto Spell Check	Automatická kontrola pravopisu
+	Edit Custom Dictionary…	Upraviť vlastný slovník…
+	Edit Colors	Upraviť farby
+	Recolor Artwork…	Prefarbiť kresbu…
+	Recolor with Preset	Prefarbiť podľa predvoľby
+	1 Color Job…	Zákazka s 1 farbou…
+	2 Color Job…	Zákazka s 2 farbami…
+	3 Color Job…	Zákazka s 3 farbami…
+	Color Library…	Knižnica farieb…
+	Adjust Color Balance…	Upraviť vyváženie farieb…
+	Blend Front to Back	Prelínať spredu dozadu
+	Blend Horizontally	Prelínať vodorovne
+	Blend Vertically	Prelínať zvisle
+	Convert to CMYK	Previesť na CMYK
+	Convert to Grayscale	Previesť na odtiene sivej
+	Convert to RGB	Previesť na RGB
+	Invert Colors	Invertovať farby
+	Overprint Black…	Pretlač čiernej…
+	Saturate…	Sýtosť…
+	Edit Original	Upraviť originál
+	Transparency Flattener Presets…	Predvoľby zlúčenia priehľadnosti…
+	Print Presets…	Predvoľby tlače…
+	PDF Presets…	Predvoľby PDF…
+	Perspective Grid Presets…	Predvoľby perspektívnej mriežky…
+	Preferences…	Nastavenia…
+	Horizontal Align Left	Zarovnať vodorovne doľava
+	Horizontal Align Center	Zarovnať vodorovne na stred
+	Horizontal Align Right	Zarovnať vodorovne doprava
+	Horizontal & Vertical Align Center	Zarovnať na stred vodorovne aj zvisle
+	Vertical Align Top	Zarovnať zvisle nahor
+	Vertical Align Center	Zarovnať zvisle na stred
+	Vertical Align Bottom	Zarovnať zvisle nadol
+	Group	Zoskupiť
+	Ungroup	Zrušiť zoskupenie
+	Lock	Zamknúť
+	All Artwork Above	Všetku kresbu nad
+	Other Layers	Ostatné vrstvy
+	Unlock All	Odomknúť všetko
+	Hide	Skryť
+	Show All	Zobraziť všetko
+	Expand Appearance	Rozložiť vzhľad
+	Crop Image	Orezať obraz
+	Rasterize…	Rastrovať…
+	Create Gradient Mesh…	Vytvoriť prechodovú sieť…
+	Create Object Mosaic…	Vytvoriť mozaiku objektov…
+	Vector Halftone…	Vektorový raster…
+	Create Trim Marks	Vytvoriť orezové značky
+	Flatten Transparency…	Zlúčiť priehľadnosť…
+	Make Pixel Perfect	Zarovnať na pixely
+	Slice	Rez
+	Make	Vytvoriť
+	Release	Uvoľniť
+	Create from Guides	Vytvoriť z vodiacich čiar
+	Create from Selection	Vytvoriť z výberu
+	Duplicate Slice	Duplikovať rez
+	Combine Slices	Spojiť rezy
+	Divide Slices…	Rozdeliť rezy…
+	Delete All	Odstrániť všetko
+	Slice Options…	Možnosti rezu…
+	Clip to Artboard	Orezať podľa výkresu
+	Path	Cesta
+	Join	Spojiť
+	Average…	Priemer…
+	Outline Stroke	Obrys ťahu
+	Offset Path…	Posunúť cestu…
+	Reverse Path Direction	Obrátiť smer cesty
+	Simplify…	Zjednodušiť…
+	Add Anchor Points	Pridať kotviace body
+	Remove Anchor Points	Odstrániť kotviace body
+	Divide Objects Below	Rozdeliť objekty pod
+	Split Into Grid…	Rozdeliť do mriežky…
+	Clean Up…	Vyčistiť…
+	Shape	Tvar
+	Expand Shape	Rozložiť tvar
+	Pattern	Vzorka
+	Edit Pattern	Upraviť vzorku
+	Tile Edge Color…	Farba okraja dlaždice…
+	Repeat	Opakovanie
+	Radial	Kruhové
+	Mirror	Zrkadlové
+	Options…	Možnosti…
+	Blend	Prechod tvarov
+	Blend Options…	Možnosti prechodu tvarov…
+	Expand	Rozložiť
+	Replace Spine	Nahradiť os
+	Reverse Spine	Obrátiť os
+	Reverse Front to Back	Obrátiť poradie spredu dozadu
+	Envelope Distort	Deformácia obálkou
+	Make with Warp…	Vytvoriť s pokrivením…
+	Reset with Warp…	Obnoviť s pokrivením…
+	Make with Mesh…	Vytvoriť so sieťou…
+	Reset with Mesh…	Obnoviť so sieťou…
+	Make with Top Object	Vytvoriť s horným objektom
+	Envelope Options…	Možnosti obálky…
+	Edit Contents	Upraviť obsah
+	Attach to Active Plane	Pripojiť k aktívnej rovine
+	Release with Perspective	Uvoľniť s perspektívou
+	Move Plane to Match Object	Posunúť rovinu k objektu
+	Edit Text	Upraviť text
+	Live Paint	Živá maľba
+	Merge	Zlúčiť
+	Gap Options…	Možnosti medzier…
+	Image Trace	Vektorizácia obrazu
+	Make and Expand	Vytvoriť a rozložiť
+	Text Wrap	Obtekanie textu
+	Text Wrap Options…	Možnosti obtekania textu…
+	Clipping Mask	Orezová maska
+	Edit Clipping Path	Upraviť orezovú cestu
+	Compound Path	Zložená cesta
+	Artboards	Výkresy
+	Convert to Artboards	Previesť na výkresy
+	Rearrange All Artboards…	Preusporiadať všetky výkresy…
+	Fit to Artwork Bounds	Prispôsobiť hraniciam kresby
+	Fit to Selected Art	Prispôsobiť vybranej kresbe
+	Graph	Graf
+	Type…	Typ…
+	Data…	Údaje…
+	Design…	Vzhľad…
+	Column…	Stĺpec…
+	Marker…	Značka…
+	Collect for Export	Zhromaždiť na export
+	As Single Asset	Ako jeden prvok
+	As Multiple Assets	Ako viac prvkov
+	Plug-ins	Zásuvné moduly
+	Font	Písmo
+	Recent Fonts	Nedávne písma
+	Recent Font	Nedávne písmo
+	Bold	Tučné
+	Italic	Kurzíva
+	Insert Special Character	Vložiť špeciálny znak
+	Insert Whitespace Character	Vložiť znak medzery
+	Insert Break Character	Vložiť znak zlomu
+	Convert To Area Type	Previesť na plošný text
+	Convert To Point Type	Previesť na bodový text
+	Area Type Options…	Možnosti plošného textu…
+	Type on a Path	Text na ceste
+	Type on a Path Options…	Možnosti textu na ceste…
+	Threaded Text	Zreťazený text
+	Release Selection	Uvoľniť výber
+	Remove Threading	Odstrániť zreťazenie
+	Fit Headline	Prispôsobiť nadpis
+	Find Font…	Nájsť písmo…
+	Change Case	Zmeniť veľkosť písmen
+	UPPERCASE	VEĽKÉ PÍSMENÁ
+	lowercase	malé písmená
+	Title Case	Veľké Začiatočné Písmená
+	Sentence case	Ako vo vete
+	Smart Punctuation…	Inteligentná interpunkcia…
+	Create Outlines	Vytvoriť obrysy
+	Optical Margin Alignment	Optické zarovnanie okrajov
+	Fill with Placeholder Text	Vyplniť zástupným textom
+	Insert Inline Symbol	Vložiť symbol do textu
+	Show Hidden Characters	Zobraziť skryté znaky
+	Type Orientation	Orientácia textu
+	Horizontal	Vodorovne
+	Vertical	Zvisle
+	All on Active Artboard	Všetko na aktívnom výkrese
+	Inverse	Inverzný
+	Next Object Above	Ďalší objekt nad
+	Next Object Below	Ďalší objekt pod
+	Same	Rovnaký
+	Appearance	Vzhľad
+	Appearance Attribute	Atribút vzhľadu
+	Blending Mode	Režim prelínania
+	Fill & Stroke	Výplň a ťah
+	Fill Color	Farba výplne
+	Opacity	Krytie
+	Stroke Color	Farba ťahu
+	Stroke Weight	Hrúbka ťahu
+	Graphic Style	Grafický štýl
+	Symbol Instance	Inštancia symbolu
+	Font Family	Rodina písma
+	Font Family & Style	Rodina a rez písma
+	Font Family, Style & Size	Rodina, rez a veľkosť písma
+	Font Size	Veľkosť písma
+	Text Fill Color	Farba výplne textu
+	Text Stroke Color	Farba ťahu textu
+	Object	Objekt
+	All on Same Layers	Všetko na rovnakých vrstvách
+	Direction Handles	Smerové úchyty
+	Brush Strokes	Ťahy štetcom
+	Bristle Brush Strokes	Ťahy štetinovým štetcom
+	Clipping Masks	Orezové masky
+	Slices	Rezy
+	Stray Points	Osamotené body
+	Open Paths	Otvorené cesty
+	All Text Objects	Všetky textové objekty
+	Point Text Objects	Bodové textové objekty
+	Area Text Objects	Plošné textové objekty
+	Start Global Edit	Spustiť globálnu úpravu
+	Edit Selection…	Upraviť výber…
+	Saved Selection	Uložený výber
+	Outline	Obrysy
+	Overprint Preview	Náhľad pretlače
+	Pixel Preview	Náhľad pixelov
+	Trim View	Orezané zobrazenie
+	Presentation Mode	Režim prezentácie
+	Normal Screen Mode	Normálny režim obrazovky
+	Full Screen Mode with Menu Bar	Celá obrazovka s panelom ponúk
+	Full Screen Mode	Celá obrazovka
+	Working CMYK	Pracovný CMYK
+	Legacy Macintosh RGB (Gamma 1.8)	Staršie Macintosh RGB (gama 1,8)
+	Internet Standard RGB (sRGB)	Štandardné internetové RGB (sRGB)
+	Monitor RGB	RGB monitora
+	Color blindness – Protanopia-type	Farbosleposť – typ protanopia
+	Color blindness – Deuteranopia-type	Farbosleposť – typ deuteranopia
+	Customize…	Prispôsobiť…
+	Fit Artboard in Window	Prispôsobiť výkres oknu
+	Fit All in Window	Prispôsobiť všetko oknu
+	Actual Size	Skutočná veľkosť
+	Reset Rotate View	Obnoviť otočenie zobrazenia
+	Hide Edges	Skryť okraje
+	Hide Artboards	Skryť výkresy
+	Show Print Tiling	Zobraziť dlaždice tlače
+	Hide Slices	Skryť rezy
+	Show Rulers	Zobraziť pravítka
+	Change to Global Rulers	Prepnúť na globálne pravítka
+	Show Video Rulers	Zobraziť video pravítka
+	Hide Bounding Box	Skryť ohraničenie
+	Show Transparency Grid	Zobraziť mriežku priehľadnosti
+	Hide Text Threads	Skryť zreťazenie textu
+	Hide Gradient Annotator	Skryť ovládač prechodu
+	Hide Corner Widget	Skryť ovládač rohov
+	Hide Guides	Skryť vodiace čiary
+	Make Guides	Vytvoriť vodiace čiary
+	Release Guides	Uvoľniť vodiace čiary
+	Smart Guides	Inteligentné vodiace čiary
+	Perspective Grid	Perspektívna mriežka
+	Show Grid	Zobraziť mriežku
+	Snap to Grid	Prichytávať k mriežke
+	Lock Grid	Zamknúť mriežku
+	Lock Station Point	Zamknúť bod pohľadu
+	Define Grid…	Definovať mriežku…
+	One Point Perspective	Jednobodová perspektíva
+	Two Point Perspective	Dvojbodová perspektíva
+	Three Point Perspective	Trojbodová perspektíva
+	Save Grid as Preset…	Uložiť mriežku ako predvoľbu…
+	Snap to Pixel	Prichytávať k pixelom
+	Snap to Point	Prichytávať k bodu
+	Snap to Glyph	Prichytávať ku glyfu
+	New View…	Nové zobrazenie…
+	Edit Views…	Upraviť zobrazenia…
+	Saved View 1	Uložené zobrazenie 1
+	Saved View 2	Uložené zobrazenie 2
+	Saved View 3	Uložené zobrazenie 3
+	Saved View 4	Uložené zobrazenie 4
+	Saved View 5	Uložené zobrazenie 5
+	Saved View 6	Uložené zobrazenie 6
+	Saved View 7	Uložené zobrazenie 7
+	Saved View 8	Uložené zobrazenie 8
+	Saved View 9	Uložené zobrazenie 9
+	Saved View 10	Uložené zobrazenie 10
+	New Window	Nové okno
+	Cascade	Kaskádovito
+	Tile	Dlaždice
+	Float in Window	Uvoľniť do okna
+	Consolidate All Windows	Zlúčiť všetky okná
+	Control	Ovládanie
+	Contextual Task Bar	Kontextový panel úloh
+	Toolbars	Panely nástrojov
+	Advanced	Rozšírené
+	Double Column	Dva stĺpce
+	SVG Interactivity	Interaktivita SVG
+	Brush Libraries	Knižnice štetcov
+	Graphic Style Libraries	Knižnice grafických štýlov
+	Swatch Libraries	Knižnice vzoriek farieb
+	Symbol Libraries	Knižnice symbolov
+	{{brand.name}} website	Web {{brand.name}}
+	{{this.name}} website	Web {{this.name}}
+	Search Commands…	Hľadať príkazy…
+	{{this.name}} Help…	Pomocník {{this.name}}…
+
+# FreeANDIY's own strings (About), under the "freeandiy" context
+freeandiy	{app} is based on the open-source project {upstream} (© ArtCraft Team and contributors, MIT/Apache-2.0). FreeANDIY is not affiliated with the ArtCraft team.	{app} je založený na open-source projekte {upstream} (© ArtCraft Team a prispievatelia, MIT/Apache-2.0). FreeANDIY nie je spojený s tímom ArtCraft.
+freeandiy	MIT OR Apache-2.0. Fonts: IBM Plex Sans, IBM Plex Mono (OFL). Icons: Lucide (ISC).	MIT OR Apache-2.0. Písma: IBM Plex Sans, IBM Plex Mono (OFL). Ikony: Lucide (ISC).

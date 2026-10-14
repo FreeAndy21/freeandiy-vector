@@ -1,0 +1,434 @@
+# FreeANDIY rebrand rules for this repository (applied by freeandiy/tools/rebrand, after the
+# patches in freeandiy/patches/). Modified-by: FreeANDIY (Free Andy Agency), 2026.
+#
+# Double-brace placeholders (e.g. this.name) come from branding.toml and app.toml (`rebrand vars`
+# lists them). Every rule has a minimum match count: when upstream renames or moves something, the
+# rule fails loudly instead of silently leaving the old brand in place.
+#
+# Protected text: rules first swap text that must keep the upstream name (cargo package names,
+# the .vectorcraft document format, file names we keep) for @@...@@ markers, and the last rules
+# swap them back.
+
+# Copied files whose placeholders are filled in at the end.
+templates = [
+  "crates/ui-egui/src/freeandiy.rs",
+  "crates/ui-egui/src/i18n/sk.tsv",
+]
+
+delete = [
+  "docs/brand",                                  # ArtCraft marks: forks must remove them
+  "assets/app-icon",                             # upstream's identity; ours is copied in below
+  ".github/workflows/release.yml",               # upstream's release and nightly jobs; ours: freeandiy*.yml
+  ".github/workflows/windows-arm64.yml",
+  ".github/workflows/windows7.yml",
+  ".github/workflows/packaging-lint.yml",
+  ".github/workflows/freebsd.yml",
+  ".github/workflows/print.yml",
+  ".github/workflows/affinity-corpus.yml",
+  "packaging/icons.sh",                          # icons come from the FreeANDIY meta repository
+  "packaging/macos/dmg",                         # background and layout derived from upstream's icon; ours is copied in
+]
+
+# Translation catalogs: drop the ArtCraft/Discord entries (the strings are gone from the UI).
+[[drop_lines]]
+include = ["crates/ui-egui/src/i18n/*.tsv"]
+regex = '^[^#\n]*(ArtCraft|Discord|getartcraft)'
+min = 30
+
+# ---------------------------------------------------------------------------------------------
+# Identifiers, maintainers, URLs.
+
+[[replace]]
+name = "app id"
+include = ["**"]
+exclude = ["**/*.md", "docs/**", "NOTICE", "ASSETS.md"]
+find = "ai.storyteller.vectorcraft"
+replace = "{{this.app_id}}"
+min = 20
+
+[[replace]]
+name = "developer id"
+include = ["packaging/**"]
+find = "ai.storyteller"
+replace = "{{brand.id_prefix}}"
+min = 0
+
+[[replace]]
+name = "package maintainer"
+include = ["packaging/**"]
+find = "VectorCraft maintainers <vectorcraft@storyteller.ai>"
+replace = "{{brand.maintainer}}"
+min = 1
+
+[[replace]]
+name = "help links: website"
+include = ["crates/engine/src/cmd/help.rs"]
+find = 'pub const WEBSITE_URL: &str = "https://getartcraft.com";'
+replace = 'pub const WEBSITE_URL: &str = "{{brand.website}}";'
+min = 1
+
+[[replace]]
+name = "help links: this app's page"
+include = ["crates/engine/src/cmd/help.rs"]
+find = 'format!("{WEBSITE_URL}/apps/{APP_ID}")'
+replace = 'format!("{WEBSITE_URL}/{{this.key}}")'
+min = 1
+
+[[replace]]
+name = "help links: source repository"
+include = ["crates/engine/src/cmd/help.rs"]
+find = 'format!("https://github.com/storytold/{APP_ID}")'
+replace = '"{{this.github}}".to_string()'
+min = 1
+
+[[replace]]
+name = "help link tests: expected URLs"
+include = ["crates/engine/src/cmd/help.rs", "crates/ui-egui/src/community.rs"]
+regex = '"https://getartcraft\.com/apps/vectorcraft"'
+replace = '"{{this.page}}"'
+min = 2
+
+[[replace]]
+name = "help link tests: website"
+include = ["crates/engine/src/cmd/help.rs", "crates/ui-egui/src/community.rs"]
+find = '"https://getartcraft.com"'
+replace = '"{{brand.website}}"'
+min = 2
+
+[[replace]]
+name = "help link tests: repository"
+include = ["crates/engine/src/cmd/help.rs", "crates/ui-egui/src/community.rs"]
+find = '"https://github.com/storytold/vectorcraft"'
+replace = '"{{this.github}}"'
+min = 3
+
+[[replace]]
+name = "help menu labels (code and catalogs)"
+include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
+find = "VectorCraft on getartcraft.com"
+replace = "{{this.name}} website"
+min = 3
+
+[[replace]]
+name = "help menu: website label (code and catalogs)"
+include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
+regex = 'ArtCraft [Ww]ebsite'
+replace = "{{brand.name}} website"
+min = 3
+
+[[replace]]
+name = "upstream issues URL"
+include = ["packaging/**", ".github/**"]
+find = "https://github.com/storytold/vectorcraft/issues"
+replace = "{{this.issues}}"
+min = 1
+
+[[replace]]
+name = "upstream repository URL"
+include = ["packaging/**", ".github/**"]
+regex = 'https://github\.com/storytold/vectorcraft(/|"|<|\x27|$)'
+replace = "{{this.github}}${1}"
+min = 1
+
+[[replace]]
+name = "upstream repo slug (raw URLs, GITHUB_REPOSITORY defaults)"
+include = ["packaging/**", ".github/**"]
+regex = 'storytold/vectorcraft\b'
+replace = "{{brand.github_owner}}/{{this.repo}}"
+min = 1
+
+[[replace]]
+name = "upstream product page"
+include = ["packaging/**", ".github/**"]
+find = "https://getartcraft.com/apps/vectorcraft"
+replace = "{{this.page}}"
+min = 3
+
+[[replace]]
+name = "upstream Discord (packaging contact/help links)"
+include = ["packaging/**"]
+find = "https://discord.gg/artcraft"
+replace = "{{this.issues}}"
+min = 0
+
+[[replace]]
+name = "Crafting Apps"
+include = ["crates/**/*.rs", "apps/**/*.rs", "packaging/**"]
+find = "Crafting Apps"
+replace = "{{brand.name}} apps"
+min = 0
+
+# ---------------------------------------------------------------------------------------------
+# Protect text that keeps the upstream name.
+
+[[replace]]
+name = "protect: attribution 'the VectorCraft authors'"
+include = ["apps/*/build.rs", "packaging/**"]
+find = "the VectorCraft authors"
+replace = "{{brand.owner}} and the @@UPSTREAM@@ authors"
+min = 0
+
+[[replace]]
+name = "settings dir: FreeANDIY's own (Fonts folder too)"
+include = ["apps/vectorcraft/src/*.rs"]
+find = 'prefs_path_for("VectorCraft", "vectorcraft")'
+replace = 'prefs_path_for("{{this.name}}", "{{this.repo}}")'
+min = 3
+
+[[replace]]
+name = "protect: the .vectorcraft document format (macOS document types)"
+include = ["packaging/macos/Info.plist.in"]
+regex = '(<string>|application/x-)vectorcraft(</string>)?'
+replace = '${1}@@PKG@@${2}'
+min = 2
+
+[[replace]]
+name = "web release zip: freeandiy-vector-<version>-web-wasm32.zip (before the crate-name protect)"
+include = ["packaging/web/package.sh", "packaging/web/README.md", "docs/releasing.md"]
+regex = 'vectorcraft-web-(<version>|<v>|\$VERSION)'
+replace = "{{this.repo}}-${1}-web-wasm32"
+min = 3
+
+[[replace]]
+name = "protect: cargo -p / --package vectorcraft"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+regex = '(-p|--package) vectorcraft'
+replace = '$1 @@PKG@@'
+min = 3
+
+[[replace]]
+name = "protect: crate names vectorcraft-<crate>"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+regex = 'vectorcraft-(affinity|brush|cad|color|doc|effects|engine|eps|format|geom|mcp|metafile|pathops|pdf|plugins|render|scriptcheck|svg|testkit|text|three-d|tools|trace|ui-egui|web)\b'
+replace = '@@PKG@@-$1'
+min = 1
+
+[[replace]]
+name = "protect: cargo features vectorcraft/<feature>"
+include = ["packaging/**", ".github/**"]
+find = "'vectorcraft/"
+replace = "'@@PKG@@/"
+min = 0
+
+[[replace]]
+name = "protect: source paths apps/vectorcraft"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+regex = '(apps[/\\])vectorcraft'
+replace = '${1}@@PKG@@'
+min = 1
+
+[[replace]]
+name = "protect: crate idents vectorcraft_"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+find = "vectorcraft_"
+replace = "@@PKG@@_"
+min = 0
+
+[[replace]]
+name = "protect: WiX sources vectorcraft.wxs/.wxl"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+regex = 'vectorcraft(\.wxs|\.en-us\.wxl)'
+replace = '@@PKG@@${1}'
+min = 1
+
+# ---------------------------------------------------------------------------------------------
+# The product name in the UI, messages, translations, packaging and the web page.
+
+[[replace]]
+name = "name + capital (identifier-like): VectorCraftX"
+include = ["**/*.rs", "**/*.tsv", "packaging/**", "apps/vectorcraft-web/index.html"]
+regex = 'VectorCraft([A-Z])'
+replace = 'FreeANDIYVector${1}'
+skip_comments = ["//"]
+min = 0
+
+[[replace]]
+name = "name + inflection (cs/pl/...): VectorCraftu"
+include = ["crates/ui-egui/src/i18n/*.tsv"]
+regex = 'VectorCraft[a-z]+'
+replace = "{{this.name}}"
+min = 0
+
+[[replace]]
+name = "product name VectorCraft (Rust code, not comments)"
+include = ["**/*.rs"]
+exclude = ["xtask/**"]
+find = "VectorCraft"
+replace = "{{this.name}}"
+skip_comments = ["//"]
+min = 100
+
+[[replace]]
+name = "product name VectorCraft"
+include = ["**/*.tsv", "packaging/**", "apps/vectorcraft-web/index.html", ".github/**", "Dockerfile"]
+exclude = ["crates/ui-egui/src/i18n/LICENSE-translations.txt", "**/*.md"]
+find = "VectorCraft"
+replace = "{{this.name}}"
+min = 300
+
+# ---------------------------------------------------------------------------------------------
+# Executables, packaging file names.
+
+[[replace]]
+name = "test binaries CARGO_BIN_EXE_vectorcraft"
+include = ["apps/**/*.rs"]
+find = "CARGO_BIN_EXE_vectorcraft"
+replace = "CARGO_BIN_EXE_{{this.repo}}"
+min = 4
+
+[[replace]]
+name = "cli executable name in code"
+include = ["apps/**/*.rs", "crates/**/*.rs"]
+regex = '\bvectorcraft-cli\b'
+replace = "{{this.repo}}-cli"
+min = 5
+
+[[replace]]
+name = "icon file paths in code (assets/app-icon/vectorcraft*)"
+include = ["apps/**/*.rs", "crates/**/*.rs", "apps/*/build.rs", "xtask/**"]
+find = "app-icon/vectorcraft"
+replace = "app-icon/{{this.repo}}"
+min = 4
+
+[[replace]]
+name = "macOS window icon: our 1024 px tile"
+include = ["apps/vectorcraft/src/main.rs"]
+find = "app-icon/{{this.repo}}-macos-512.png"
+replace = "app-icon/{{this.repo}}-1024.png"
+min = 1
+
+[[replace]]
+name = "app bar / About mark: the monogram tile"
+include = ["crates/ui-egui/src/brand.rs"]
+find = "assets/app-icon/hicolor/128x128/apps/{{this.app_id}}.png"
+replace = "assets/app-icon/{{this.repo}}-mark.png"
+min = 1
+
+[[replace]]
+name = "windows exe resources"
+include = ["apps/*/build.rs"]
+regex = '"vectorcraft(\.exe)?"'
+replace = '"{{this.repo}}${1}"'
+min = 0
+
+[[replace]]
+name = "packaging/CI: executables, file names, paths"
+include = ["packaging/**", ".github/**", "Dockerfile"]
+regex = 'vectorcraft'
+replace = "{{this.repo}}"
+min = 80
+
+[[replace]]
+name = "MSI UpgradeCode and component GUID (new GUIDs)"
+include = ["packaging/windows/*.wxs"]
+regex = 'UpgradeCode="[0-9A-Fa-f-]{36}"'
+replace = 'UpgradeCode="{{this.msi_upgrade_code}}"'
+min = 1
+
+# ---------------------------------------------------------------------------------------------
+# Restore protected text.
+
+[[replace]]
+name = "restore @@UPSTREAM@@"
+include = ["**"]
+find = "@@UPSTREAM@@"
+replace = "{{this.upstream_name}}"
+min = 0
+
+[[replace]]
+name = "restore @@PKG@@"
+include = ["**"]
+find = "@@PKG@@"
+replace = "vectorcraft"
+min = 8
+
+# ---------------------------------------------------------------------------------------------
+
+# Upstream's README stays available; ours replaces it at the root.
+[[rename]]
+include = ["README.md"]
+find = "README.md"
+replace = "docs/upstream-README.md"
+min = 1
+
+[[rename]]
+include = ["packaging/**"]
+find = "ai.storyteller.vectorcraft"
+replace = "{{this.app_id}}"
+min = 4
+
+[[copy]]
+from = "freeandiy/overlay"
+to = "."
+
+[[copy]]
+from = "freeandiy/assets/dmg/background.tiff"
+to = "packaging/macos/dmg/background.tiff"
+
+[[copy]]
+from = "freeandiy/assets/dmg/dmg-layout.DS_Store"
+to = "packaging/macos/dmg/DS_Store"
+
+[[copy]]
+from = "freeandiy/templates/freeandiy.rs"
+to = "crates/ui-egui/src/freeandiy.rs"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/{{this.key}}.svg"
+to = "assets/app-icon/{{this.repo}}.svg"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/{{this.key}}.svg"
+to = "assets/app-icon/{{this.repo}}-small.svg"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/mark-128.png"
+to = "assets/app-icon/{{this.repo}}-mark.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/macos-1024.png"
+to = "assets/app-icon/{{this.repo}}-1024.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/{{this.key}}.icns"
+to = "assets/app-icon/{{this.repo}}.icns"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/{{this.key}}.ico"
+to = "assets/app-icon/{{this.repo}}.ico"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/{{this.key}}.svg"
+to = "assets/app-icon/hicolor/scalable/apps/{{this.app_id}}.svg"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/16.png"
+to = "assets/app-icon/hicolor/16x16/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/24.png"
+to = "assets/app-icon/hicolor/24x24/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/32.png"
+to = "assets/app-icon/hicolor/32x32/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/48.png"
+to = "assets/app-icon/hicolor/48x48/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/64.png"
+to = "assets/app-icon/hicolor/64x64/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/128.png"
+to = "assets/app-icon/hicolor/128x128/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/256.png"
+to = "assets/app-icon/hicolor/256x256/apps/{{this.app_id}}.png"
+
+[[copy]]
+from = "freeandiy/assets/icons/{{this.key}}/hicolor/512.png"
+to = "assets/app-icon/hicolor/512x512/apps/{{this.app_id}}.png"

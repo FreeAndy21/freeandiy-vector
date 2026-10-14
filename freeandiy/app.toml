@@ -1,0 +1,22 @@
+# This repository's FreeANDIY settings (branding.toml is shared by all FreeANDIY repositories).
+# Modified-by: FreeANDIY (Free Andy Agency), 2026. New file, not part of upstream VectorCraft.
+
+app = "vector" # which [apps.<id>] entry of branding.toml this repository builds
+
+[build]
+# cargo arguments for the release binaries, the tests sync-upstream.sh runs, and the web page.
+bins = "-p vectorcraft -p vectorcraft-cli"
+features = ""
+tests = "-p vectorcraft-ui-egui -p vectorcraft-engine -p vectorcraft -p vectorcraft-cli"
+web_index = "apps/vectorcraft-web/index.html"
+# Environment for tests: English UI whatever the machine's locale.
+test_env = "VECTORCRAFT_LOCALE=en"
+web_env = ""
+# Upstream has no test workflow of its own: freeandiy.yml runs build.tests on Linux.
+ci_tests = "true"
+
+[check]
+# check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
+# in string literals (git pathspecs, space-separated).
+allow = ""
+rs_exclude = ":!xtask/**"

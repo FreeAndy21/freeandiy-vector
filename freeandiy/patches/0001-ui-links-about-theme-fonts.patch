@@ -1,0 +1,431 @@
+diff --git a/apps/vectorcraft/src/main.rs b/apps/vectorcraft/src/main.rs
+index d1375a8b..f886302e 100644
+--- a/apps/vectorcraft/src/main.rs
++++ b/apps/vectorcraft/src/main.rs
+@@ -527,7 +527,7 @@ fn services(parent: Parent, ui: egui::Context) -> Services {
+         // owner that never answers holds a read for up to 4 s. Windows only asks which formats the
+         // clipboard holds and macOS asks the pasteboard server, so they check in line.
+         clipboard_probe: cfg!(target_os = "linux").then(|| Box::new(clipboard::system_clipboard) as ClipboardProbeFactory),
+-        // Help → Discord / website / GitHub, the Discord button, About and Home links.
++        // Help → website / GitHub, About and Home links.
+         open_url: Some(Box::new(|url: &str| {
+             let _ = webbrowser::open(url);
+         })),
+diff --git a/crates/engine/src/cmd/help.rs b/crates/engine/src/cmd/help.rs
+index aba4d608..395f6957 100644
+--- a/crates/engine/src/cmd/help.rs
++++ b/crates/engine/src/cmd/help.rs
+@@ -1,4 +1,4 @@
+-//! Help → community and project links (the ArtCraft Discord, website, this app's page and its
++//! Help → project links (the website, this app's page and its
+ //! GitHub repository). The commands return the URL; the frontend opens it.
+ 
+ use serde_json::{Value, json};
+@@ -7,7 +7,6 @@ use super::*;
+ 
+ /// The app's id on getartcraft.com and GitHub.
+ pub const APP_ID: &str = "vectorcraft";
+-pub const DISCORD_URL: &str = "https://discord.gg/artcraft";
+ pub const WEBSITE_URL: &str = "https://getartcraft.com";
+ 
+ /// This app's page on the website.
+@@ -22,12 +21,11 @@ pub fn github_url() -> String {
+ 
+ pub fn specs() -> Vec<CommandSpec> {
+     vec![
+-        cmd!(query "help.discord", "Join Our Discord", ["Help"], None, "{} → {url} the ArtCraft community Discord", always, |_, _| url(DISCORD_URL.into())),
+         cmd!(query "help.website", "ArtCraft Website", ["Help"], None, "{} → {url}", always, |_, _| url(WEBSITE_URL.into())),
+         cmd!(query "help.appPage", "VectorCraft on getartcraft.com", ["Help"], None, "{} → {url} this app's page", always, |_, _| url(app_page_url())),
+         cmd!(query "help.github", "VectorCraft on GitHub", ["Help"], None, "{} → {url} source code, issues and releases", always, |_, _| url(github_url())),
+-        cmd!(query "help.links", "Links", [], None, "{} → {discord, website, appPage, github}", always, |_, _| {
+-            Ok(json!({ "discord": DISCORD_URL, "website": WEBSITE_URL, "appPage": app_page_url(), "github": github_url() }))
++        cmd!(query "help.links", "Links", [], None, "{} → {website, appPage, github}", always, |_, _| {
++            Ok(json!({ "website": WEBSITE_URL, "appPage": app_page_url(), "github": github_url() }))
+         }),
+     ]
+ }
+@@ -43,7 +41,6 @@ mod tests {
+     #[test]
+     fn links() {
+         let mut s = Session::new();
+-        assert_eq!(s.execute("help.discord", &json!({})).unwrap()["url"], "https://discord.gg/artcraft");
+         assert_eq!(s.execute("help.appPage", &json!({})).unwrap()["url"], "https://getartcraft.com/apps/vectorcraft");
+         assert_eq!(s.execute("help.github", &json!({})).unwrap()["url"], "https://github.com/storytold/vectorcraft");
+         assert_eq!(s.execute("help.links", &json!({})).unwrap()["website"], "https://getartcraft.com");
+diff --git a/crates/ui-egui/src/brand.rs b/crates/ui-egui/src/brand.rs
+index 461af137..fc16638c 100644
+--- a/crates/ui-egui/src/brand.rs
++++ b/crates/ui-egui/src/brand.rs
+@@ -1,6 +1,6 @@
+-//! The VectorCraft brand mark: the app icon (the engraved dragon, `assets/app-icon/`, see its
+-//! README). The PNG carries the icon's rounded corners; it is decoded once per context into a
+-//! mipmapped texture, so it stays crisp from the 18 pt app-bar mark to the About box.
++//! The brand mark: the app's monogram tile (`assets/app-icon/`, see its README; FreeANDIY's
++//! square print look). It is decoded once per context into a mipmapped texture, so it stays crisp
++//! from the 18 pt app-bar mark to the About box.
+ 
+ use egui::{Color32, Context, Id, Rect, TextureHandle, TextureOptions, Ui, pos2};
+ 
+@@ -48,11 +48,11 @@ mod tests {
+     use crate::VectorcraftApp;
+ 
+     #[test]
+-    fn the_icon_decodes_to_a_rounded_128_px_tile() {
++    fn the_icon_decodes_to_a_square_128_px_tile() {
+         let img = decode();
+         assert_eq!(img.size, [128, 128]);
+-        // Rounded corners: the corner pixel is transparent, the centre opaque.
+-        assert_eq!(img.pixels[0].a(), 0);
++        // A square tile: opaque to the corners.
++        assert_eq!(img.pixels[0].a(), 255);
+         assert_eq!(img.pixels[64 * 128 + 64].a(), 255);
+     }
+ 
+diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
+index f9af2db7..ba73fb7a 100644
+--- a/crates/ui-egui/src/chrome.rs
++++ b/crates/ui-egui/src/chrome.rs
+@@ -19,7 +19,7 @@ const MARK: f32 = 18.0;
+ /// Height of the workspace switcher.
+ const WIDGET_H: f32 = 22.0;
+ 
+-/// The application bar: brand mark, Home, menus, then Discord, search and the workspace switcher
++/// The application bar: brand mark, Home, menus, then search and the workspace switcher
+ /// at the right. With [`VectorcraftApp::custom_titlebar`] it is also the window's title bar
+ /// ([`titlebar`]): the caption buttons take the right end and the rest of the bar drags the window.
+ /// With the system title bar (Windows and Linux, `system_title_bar`) the OS draws its own icon and
+@@ -49,7 +49,7 @@ pub fn app_bar(app: &mut VectorcraftApp, ui: &mut Ui) {
+             // With the macOS menu bar the menus are at the top of the screen instead.
+             let menus_end = if app.services.native_menu.is_some() { ui.cursor().min.x } else { menus::menu_bar(app, ui) };
+             // The right-side group fills the space after the menus from the right; when it runs
+-            // short, Discord goes first (it is also under Help), then the search icon (the palette
++            // short, the search icon goes first (the palette
+             // stays under its shortcut), then the workspace switcher narrows.
+             let full = ui.max_rect();
+             let right_edge = if custom { full.right() - titlebar::WIDTH - 10.0 } else { full.right() };
+@@ -65,7 +65,6 @@ pub fn app_bar(app: &mut VectorcraftApp, ui: &mut Ui) {
+             let icon = 28.0;
+             let search = room >= 64.0 + 8.0 + gap + icon;
+             let ws_w = ws_w.min(room - 8.0 - gap - if search { icon } else { 0.0 }).max(64.0);
+-            let discord = search && room >= ws_w + 8.0 + gap + icon + 10.0 + gap + crate::community::discord_width(ui, false);
+             let mut rui = ui.new_child(egui::UiBuilder::new().max_rect(right).layout(egui::Layout::right_to_left(egui::Align::Center)));
+             let ui = &mut rui;
+             // Workspace switcher: shows the current workspace, opens Window → Workspace.
+@@ -87,10 +86,6 @@ pub fn app_bar(app: &mut VectorcraftApp, ui: &mut Ui) {
+                     app.ui.palette_query.clear();
+                 }
+             }
+-            if discord {
+-                ui.add_space(10.0);
+-                crate::community::discord_button(app, ui, false);
+-            }
+             if app.services.native_menu.is_some() {
+                 let title = ui.painter().layout_no_wrap("VectorCraft".into(), egui::FontId::proportional(13.5), t.text);
+                 let title_rect = egui::Rect::from_center_size(full.center(), title.size());
+diff --git a/crates/ui-egui/src/community.rs b/crates/ui-egui/src/community.rs
+index ef63f473..46da07bd 100644
+--- a/crates/ui-egui/src/community.rs
++++ b/crates/ui-egui/src/community.rs
+@@ -1,45 +1,11 @@
+-//! Community and project links: the Discord button (header, About, Home) and the link list.
+-//! Icons are Lucide's (ISC); Discord's own logo is a trademark, so the button uses a chat icon
+-//! on Discord's colour with the word "Discord".
++//! Project links (About, Home): the website, this app's page and its source code.
++//! Icons are Lucide's (ISC).
+ 
+-use egui::{Color32, CornerRadius, Sense, Ui, vec2};
++use egui::Ui;
+ 
+-use crate::theme::{self, Tokens};
++use crate::theme::Tokens;
+ use crate::{VectorcraftApp, icons};
+ 
+-/// Discord's brand colour (a colour, not a logo).
+-const DISCORD: Color32 = Color32::from_rgb(0x58, 0x65, 0xF2);
+-
+-/// The Discord button's label, height and width.
+-fn discord_layout(ui: &Ui, large: bool) -> (std::sync::Arc<egui::Galley>, f32, f32) {
+-    let (h, font, label) = if large { (36.0, theme::semibold(14.0), tl!("Join our Discord")) } else { (24.0, theme::semibold(12.0), "Discord") };
+-    let galley = ui.painter().layout_no_wrap(label.to_string(), font, Color32::WHITE);
+-    let w = galley.size().x + h * 0.55 + h * 0.9;
+-    (galley, h, w)
+-}
+-
+-/// The Discord button's width (the app bar drops it when space runs out).
+-pub fn discord_width(ui: &Ui, large: bool) -> f32 {
+-    discord_layout(ui, large).2
+-}
+-
+-/// A Discord pill button: compact for the header, large for About / Home.
+-pub fn discord_button(app: &mut VectorcraftApp, ui: &mut Ui, large: bool) -> egui::Response {
+-    let (galley, h, w) = discord_layout(ui, large);
+-    let icon = h * 0.55;
+-    let (r, resp) = ui.allocate_exact_size(vec2(w, h), Sense::click());
+-    let fill = if resp.hovered() { DISCORD.gamma_multiply(0.85) } else { DISCORD };
+-    ui.painter().rect_filled(r, CornerRadius::same((h / 2.0) as u8), fill);
+-    let ir = egui::Rect::from_center_size(r.left_center() + vec2(h * 0.35 + icon / 2.0, 0.0), vec2(icon, icon));
+-    icons::paint(ui, "message-circle", ir, Color32::WHITE);
+-    ui.painter().galley(egui::pos2(ir.right() + h * 0.2, r.center().y - galley.size().y / 2.0), galley, Color32::WHITE);
+-    let resp = resp.on_hover_text(tl!("Join the ArtCraft community on Discord (discord.gg/artcraft)"));
+-    if resp.clicked() {
+-        app.open_link("help.discord");
+-    }
+-    resp
+-}
+-
+ /// One link row: icon, label, opens the command's URL.
+ fn link(app: &mut VectorcraftApp, ui: &mut Ui, icon: &str, label: &str, cmd: &str, url: &str) {
+     let t = Tokens::get(ui.ctx());
+@@ -52,10 +18,8 @@ fn link(app: &mut VectorcraftApp, ui: &mut Ui, icon: &str, label: &str, cmd: &st
+     });
+ }
+ 
+-/// The Discord button and the website / app page / GitHub links.
++/// The website / app page / GitHub links.
+ pub fn links(app: &mut VectorcraftApp, ui: &mut Ui) {
+-    discord_button(app, ui, true);
+-    ui.add_space(8.0);
+     let l = app.session.execute("help.links", &serde_json::json!({})).unwrap_or_default();
+     let s = |k: &str| l[k].as_str().unwrap_or("").to_string();
+     link(app, ui, "globe", tl!("ArtCraft website"), "help.website", &s("website"));
+@@ -74,24 +38,23 @@ mod tests {
+         let o = opened.clone();
+         let services = crate::Services { open_url: Some(Box::new(move |u: &str| o.lock().unwrap().push(u.to_string()))), ..Default::default() };
+         let mut app = VectorcraftApp::new(vectorcraft_engine::Session::new(), services);
+-        for id in ["help.discord", "help.website", "help.appPage", "help.github"] {
++        for id in ["help.website", "help.appPage", "help.github"] {
+             crate::menus::invoke(&mut app, id, serde_json::json!({}));
+         }
+         assert_eq!(
+             *opened.lock().unwrap(),
+             [
+-                "https://discord.gg/artcraft",
+                 "https://getartcraft.com",
+                 "https://getartcraft.com/apps/vectorcraft",
+                 "https://github.com/storytold/vectorcraft"
+             ]
+         );
+         // The control channel / MCP path returns the URL without opening a browser.
+-        let v = app.run("help.discord", serde_json::json!({})).unwrap();
+-        assert_eq!(v["url"], "https://discord.gg/artcraft");
+-        assert_eq!(opened.lock().unwrap().len(), 4);
++        let v = app.run("help.github", serde_json::json!({})).unwrap();
++        assert_eq!(v["url"], "https://github.com/storytold/vectorcraft");
++        assert_eq!(opened.lock().unwrap().len(), 3);
+         let ctx = egui::Context::default();
+-        theme::install_fonts(&ctx);
++        crate::theme::install_fonts(&ctx);
+         let mut out = ctx.run_ui(egui::RawInput::default(), |ui| links(&mut app, ui));
+         out.textures_delta.clear();
+     }
+diff --git a/crates/ui-egui/src/dialogs/about.rs b/crates/ui-egui/src/dialogs/about.rs
+index af248d16..25234cc4 100644
+--- a/crates/ui-egui/src/dialogs/about.rs
++++ b/crates/ui-egui/src/dialogs/about.rs
+@@ -62,12 +62,7 @@ fn about_tab(app: &mut VectorcraftApp, ui: &mut egui::Ui) {
+     ui.add_space(12.0);
+     crate::community::links(app, ui);
+     ui.add_space(12.0);
+-    ui.label(
+-        egui::RichText::new(tl!(
+-            "Part of ArtCraft. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + VectorCraft."
+-        ))
+-        .size(11.0),
+-    );
++    crate::freeandiy::about_attribution(ui);
+     // The GPU the window renders with, for bug reports (Preferences › Performance picks it).
+     if let Some(adapter) = &app.graphics_adapter {
+         ui.add_space(6.0);
+diff --git a/crates/ui-egui/src/graphics.rs b/crates/ui-egui/src/graphics.rs
+index 7268fb27..08e86af7 100644
+--- a/crates/ui-egui/src/graphics.rs
++++ b/crates/ui-egui/src/graphics.rs
+@@ -212,7 +212,7 @@ mod tests {
+         assert_eq!(texture_name(&new, canvas).as_deref(), Some("canvas"), "uploaded to the new context");
+         assert_eq!(texture_name(&new, preview(&new)).as_deref(), Some("preview-8x8@1:loss"), "cached previews are made again");
+         assert_eq!(new.global_style().visuals.panel_fill, old.global_style().visuals.panel_fill, "the theme is applied again");
+-        assert!(new.fonts(|f| f.definitions().font_data.contains_key("SourceSans3")), "and the fonts installed");
++        assert!(new.fonts(|f| f.definitions().font_data.contains_key("IBMPlexSans")), "and the fonts installed");
+     }
+ 
+     #[test]
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index 55c158ca..e96c114c 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -28,6 +28,7 @@ mod edit_toolbar;
+ pub mod find_font;
+ pub mod floating;
+ pub mod font_menu;
++pub mod freeandiy;
+ mod free_transform;
+ pub mod graphics;
+ pub mod i18n;
+@@ -724,7 +725,7 @@ impl VectorcraftApp {
+         r
+     }
+ 
+-    /// Open a link in the browser (Help → Discord, website, GitHub…).
++    /// Open a link in the browser (Help → website, GitHub…).
+     pub fn open_url(&mut self, url: &str) {
+         match self.services.open_url.as_mut() {
+             Some(open) => open(url),
+diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
+index 7f32ab48..8a4dcb65 100644
+--- a/crates/ui-egui/src/menus.rs
++++ b/crates/ui-egui/src/menus.rs
+@@ -2073,13 +2073,13 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
+     let panel = |label: &'static str, id: &'static str| cp(label, "window.panel", json!({ "panel": id }));
+     vec![
+         (
+-            // The application menu: About and Discord only. The in-window bar never shows it (File
++            // The application menu: About only. The in-window bar never shows it (File
+             // is first there, as in Illustrator); on macOS `native_menu::mac_layout` composes the
+             // App menu from this entry and the other menus (About from Help, Settings from Edit,
+             // Quit from File, Language and Appearance synthesized). It stays first: `from_tree`
+             // gives the first menu the App role.
+             "VectorCraft",
+-            vec![c("About VectorCraft", "help.about"), c("Join Our Discord", "help.discord")],
++            vec![c("About VectorCraft", "help.about")],
+         ),
+         (
+             "File",
+@@ -2706,7 +2706,6 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
+         (
+             "Help",
+             vec![
+-                c("Join Our Discord", "help.discord"),
+                 c("ArtCraft Website", "help.website"),
+                 c("VectorCraft on getartcraft.com", "help.appPage"),
+                 c("VectorCraft on GitHub", "help.github"),
+@@ -3268,7 +3267,7 @@ pub fn invoke(app: &mut VectorcraftApp, id: &str, p: Value) {
+         return;
+     }
+     // Help links: the command returns the URL; a menu click opens it (agents just get the URL).
+-    if matches!(id, "help.discord" | "help.website" | "help.appPage" | "help.github") {
++    if matches!(id, "help.website" | "help.appPage" | "help.github") {
+         app.open_link(id);
+         return;
+     }
+diff --git a/crates/ui-egui/src/native_menu.rs b/crates/ui-egui/src/native_menu.rs
+index 83427dd5..f304b98a 100644
+--- a/crates/ui-egui/src/native_menu.rs
++++ b/crates/ui-egui/src/native_menu.rs
+@@ -10,7 +10,7 @@
+ //!   `app.quit`, so documents with unsaved changes are asked about. Language and Appearance have
+ //!   no in-window menu (as in PhotoCraft) and are synthesized here; Quit is File › Exit in the
+ //!   window and reads as Quit in the App menu. These leave the other menus (Edit › Preferences…,
+-//!   Help › About), and Join Our Discord stays under Help only;
++//!   Help › About);
+ //! - **Window** gets Minimize ⌃⌘M, Zoom and Bring All to Front, and **Help** the system's search
+ //!   field;
+ //! - a system key already bound to a command keeps the command's: the system item goes without.
+@@ -325,7 +325,7 @@ pub fn mac_layout(app: &VectorcraftApp, bar: &MenuBar, lang: Lang) -> Layout {
+     // them, else synthesized here (the in-window bar has neither).
+     let language = take_submenu(&mut bar, "app.language").or_else(|| Some(language_node(app, lang)));
+     let appearance = take_submenu(&mut bar, "window.brightness").or_else(|| Some(appearance_node(app, lang)));
+-    // Its other items (Join Our Discord) stay where the in-window bar also has them: Help.
++    // Its other items (none at present) would stay where the in-window bar also has them.
+     bar.menus.retain(|m| m.role != MenuRole::App);
+ 
+     let mut app = Vec::new();
+diff --git a/crates/ui-egui/src/tests_nativemenu.rs b/crates/ui-egui/src/tests_nativemenu.rs
+index d910a655..cd81c7a9 100644
+--- a/crates/ui-egui/src/tests_nativemenu.rs
++++ b/crates/ui-egui/src/tests_nativemenu.rs
+@@ -151,8 +151,8 @@ fn language_and_appearance_are_in_the_app_menu() {
+ }
+ 
+ /// Everything the in-window bar lists is in the Mac menu bar, once: what moved to the app menu
+-/// (About, Settings, Quit, Language, UI Brightness) leaves its other places, and Join Our Discord
+-/// stays under Help.
++/// (About, Settings, Quit, Language, UI Brightness) leaves its other places, and the web links
++/// stay under Help.
+ #[test]
+ fn every_in_window_item_is_in_the_mac_menu_bar_once() {
+     let app = app(true);
+@@ -188,7 +188,7 @@ fn every_in_window_item_is_in_the_mac_menu_bar_once() {
+         assert!(a.contains_key(key) || system.contains(&key.0.as_str()) || synthesized.contains(&key.0.as_str()), "{key:?} isn't an in-window item");
+     }
+     let help = ids(menu(&mac, "Help"));
+-    assert!(help.contains(&"help.discord".to_string()) && !help.contains(&"help.about".to_string()), "{help:?}");
++    assert!(help.contains(&"help.github".to_string()) && !help.contains(&"help.about".to_string()), "{help:?}");
+     let edit = ids(menu(&mac, "Edit"));
+     assert!(!edit.contains(&"edit.preferences".to_string()) && edit.contains(&"edit.keyboardShortcuts".to_string()), "{edit:?}");
+     assert!(ids(menu(&mac, "Window")).contains(&"[Workspace]".to_string()));
+diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
+index 1315d320..bd42cc7d 100644
+--- a/crates/ui-egui/src/theme.rs
++++ b/crates/ui-egui/src/theme.rs
+@@ -141,7 +141,7 @@ impl Tokens {
+             axis_y: hex(0x45af63),
+             axis_z: hex(0x378ef0),
+         };
+-        match b {
++        let tokens = match b {
+             Brightness::Dark => base,
+             // Measured from Illustrator 2026 (plan/illustrator/10-observed-ui.md §1).
+             Brightness::MediumDark => Tokens {
+@@ -218,7 +218,8 @@ impl Tokens {
+                 button: hex(0xe0e0e0),
+                 ..base
+             },
+-        }
++        };
++        crate::freeandiy::tokens(b, tokens)
+     }
+ 
+     pub fn get(ctx: &egui::Context) -> Tokens {
+@@ -253,20 +254,20 @@ pub fn install_fonts(ctx: &egui::Context) {
+     let add = |f: &mut FontDefinitions, name: &str, bytes: &'static [u8]| {
+         f.font_data.insert(name.to_owned(), Arc::new(FontData::from_static(bytes)));
+     };
+-    add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
+-    add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
+-    add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
++    add(&mut fonts, "IBMPlexSans", crate::freeandiy::fonts::sans_regular());
++    add(&mut fonts, "IBMPlexSans-SemiBold", crate::freeandiy::fonts::sans_semibold());
++    add(&mut fonts, "IBMPlexMono", crate::freeandiy::fonts::mono_regular());
+     let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
+-    let mut prop = vec!["SourceSans3".to_string()];
++    let mut prop = vec!["IBMPlexSans".to_string()];
+     prop.extend(fallback.clone());
+     fonts.families.insert(FontFamily::Proportional, prop);
+-    let mut semi = vec!["SourceSans3-Semibold".to_string()];
++    let mut semi = vec!["IBMPlexSans-SemiBold".to_string()];
+     semi.extend(fallback.clone());
+     fonts.families.insert(FontFamily::Name(FONT_UI_SEMIBOLD.into()), semi);
+-    let mut ui = vec!["SourceSans3".to_string()];
++    let mut ui = vec!["IBMPlexSans".to_string()];
+     ui.extend(fallback.clone());
+     fonts.families.insert(FontFamily::Name(FONT_UI.into()), ui);
+-    let mut mono = vec!["JetBrainsMono".to_string()];
++    let mut mono = vec!["IBMPlexMono".to_string()];
+     mono.extend(fallback);
+     fonts.families.insert(FontFamily::Name(FONT_MONO.into()), mono);
+     add_craft_fonts(&mut fonts);
+@@ -319,6 +320,7 @@ pub fn apply(ctx: &egui::Context, b: Brightness) {
+     w.inactive.bg_stroke = Stroke::NONE;
+     w.hovered.bg_stroke = Stroke::new(1.0, t.input_border);
+     w.active.bg_stroke = Stroke::new(1.0, t.accent);
++    crate::freeandiy::visuals(&mut v);
+     ctx.set_visuals(v);
+     ctx.global_style_mut(|s| {
+         s.spacing.item_spacing = egui::vec2(6.0, 5.0);
+diff --git a/crates/ui-egui/src/titlebar.rs b/crates/ui-egui/src/titlebar.rs
+index 79b00c53..873fbe0a 100644
+--- a/crates/ui-egui/src/titlebar.rs
++++ b/crates/ui-egui/src/titlebar.rs
+@@ -273,10 +273,10 @@ mod tests {
+                     assert!(!a.shrink(0.5).intersects(b.shrink(0.5)), "{a:?} overlaps {b:?} at {width}");
+                 }
+             }
+-            // Wide windows show the whole group; narrow ones drop Discord, then the search icon.
++            // No Discord button (FreeANDIY has none); narrow windows drop the search icon.
+             let texts: Vec<String> = texts(&out).into_iter().map(|(t, _)| t).collect();
+             let has = |s: &str| texts.iter().any(|t| t == s);
+-            assert_eq!(has("Discord"), width > 1000.0, "{width}: {texts:?}");
++            assert!(!has("Discord"), "{width}: {texts:?}");
+             // Search is an icon only (as in PhotoCraft): its label lives in the tooltip.
+             assert!(!has("Search commands and tools"), "{width}: {texts:?}");
+         }

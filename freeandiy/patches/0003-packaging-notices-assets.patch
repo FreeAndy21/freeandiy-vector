@@ -1,0 +1,150 @@
+diff --git a/ASSETS.md b/ASSETS.md
+index 1003a0e0..a026683b 100644
+--- a/ASSETS.md
++++ b/ASSETS.md
+@@ -2,7 +2,7 @@
+ 
+ Every non-code asset in this repository (icons, images, fonts, example art, colour profiles, presets) is listed here with its author, source and licence. `cargo xtask assets` (part of `cargo xtask ci`) fails if an asset file is missing from this table.
+ 
+-**Policy (mandatory):** VectorCraft contains **no Adobe iconography, images, artwork, presets, swatch/brush/symbol/pattern libraries or ICC profiles**. Every asset is either original work by VectorCraft contributors, or third-party material under an open licence (OSI open source, public domain / CC0, or Creative Commons that allows redistribution), and it is attributed below. Screenshots of Adobe software are never committed. The one exception is the ArtCraft name, wordmark and logos in `docs/brand/`: ArtCraft trademarks, not open source, usable only under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
++**Policy (mandatory):** VectorCraft contains **no Adobe iconography, images, artwork, presets, swatch/brush/symbol/pattern libraries or ICC profiles**. Every asset is either original work by VectorCraft contributors, or third-party material under an open licence (OSI open source, public domain / CC0, or Creative Commons that allows redistribution), and it is attributed below. Screenshots of Adobe software are never committed. The ArtCraft name, wordmark and logos (upstream's `docs/brand/`) are not part of FreeANDIY Vector: the fork removed them, as their terms require. The FreeANDIY brand assets and app icons are the exception to the open-licence policy: © Free Andy Agency, not open source (section below).
+ 
+ Generated-in-code art is original and has no file to list. This covers the default swatches, brushes, symbols, patterns, graphic styles, image-trace presets and the vector tool cursors (`crates/ui-egui/src/cursors.rs`).
+ 
+@@ -12,34 +12,6 @@ Generated-in-code art is original and has no file to list. This covers the defau
+ 
+ | Asset | Author | Source | Licence | Notes |
+ |---|---|---|---|---|
+-| `docs/brand/artcraft-logo-white.png` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-logo-white.svg` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-logo.png` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-logo.svg` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-mark-black.png` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-mark-black.svg` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-mark.png` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `docs/brand/artcraft-mark.svg` | ArtCraft team (project owner) | https://getartcraft.com/ | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Used in README only; not shipped in the app |
+-| `assets/app-icon/LICENSE.txt` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
+-| `assets/app-icon/README.md` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
+-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.vectorcraft.svg` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft-1024.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft-macos-512.png` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft-small.svg` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft.icns` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft.ico` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `assets/app-icon/vectorcraft.svg` | Project owner (ArtCraft team) | Original artwork drawn in ArtCraft for VectorCraft, vectorised and rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (engraved dragon) |
+-| `packaging/macos/dmg/background.svg` | Xus Badia (contributed in #493) | Original artwork for VectorCraft's DMG window; links the app icon `assets/app-icon/vectorcraft-small.svg` | MIT OR Apache-2.0 (licensed by the contributor under the project licence) | DMG background source. Text in Inter and JetBrains Mono (OFL-1.1, `assets/fonts`), not embedded; paper grain generated by an SVG `feTurbulence` filter |
+-| `packaging/macos/dmg/background.tiff` | Xus Badia (contributed in #493) | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 | 1x + 2x DMG background; includes the app icon (see its rows), text rendered from OFL-1.1 fonts and LittleCMS's built-in sRGB profile ("No copyright, use freely") |
+-| `packaging/macos/dmg/DS_Store` | Xus Badia (layout, #493) | Written by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 | Finder view settings for the DMG (window, icon size and positions, background alias); no machine data |
+ | `assets/fonts/Inter-Medium.ttf` | Rasmus Andersson / The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) | Open-source typeface, not product iconography or artwork |
+ | `assets/fonts/Inter-Regular.ttf` | Rasmus Andersson / The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) | Open-source typeface, not product iconography or artwork |
+ | `assets/fonts/Inter-SemiBold.ttf` | Rasmus Andersson / The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) | Open-source typeface, not product iconography or artwork |
+@@ -333,3 +305,18 @@ Generated-in-code art is original and has no file to list. This covers the defau
+ | `examples/ribbons.vectorcraft` | VectorCraft contributors | Original artwork built through the VectorCraft command API | MIT OR Apache-2.0 |  |
+ | `examples/feature-sheet.vectorcraft` | VectorCraft contributors | Original artwork built through the VectorCraft command API | MIT OR Apache-2.0 |  |
+ | `examples/perspective-city.vectorcraft` | VectorCraft contributors | Original artwork built through the VectorCraft command API | MIT OR Apache-2.0 |  |
++
++## FreeANDIY (added by the FreeANDIY fork)
++
++Every file under `freeandiy/` (the fork's sources: brand, fonts, icons, DMG art) is covered by the
++rows below; `cargo xtask assets` accepts any path under a `` `freeandiy/...` `` directory listed
++here.
++
++| Asset | Author | Source | Licence | Notes |
++|---|---|---|---|---|
++| `freeandiy/assets/fonts/` | IBM Corp. (IBM Plex Sans, IBM Plex Mono); The Roboto Project Authors (Roboto) | https://github.com/IBM/plex, https://github.com/googlefonts/roboto-3-classic | OFL-1.1 (`freeandiy/assets/fonts/OFL-*.txt`) | UI fonts (Plex) and long-form text (Roboto) |
++| `freeandiy/assets/brand/` | Free Andy Agency | Original work | **Not open source**: © Free Andy Agency, all rights reserved (`freeandiy/assets/brand/LICENSE-brand.txt`) | FreeANDIY and Free Andy Agency names, the angel Andy, lettering, logotypes, seal |
++| `freeandiy/assets/icons/` | Free Andy Agency | Original work, generated by `tools/make_icons.py` (FreeANDIY meta repository) | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | App icons |
++| `freeandiy/assets/dmg/` | Free Andy Agency | Original work, generated by `freeandiy/tools/make_dmg.py` | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | DMG background and layout |
++| `assets/app-icon/` | Free Andy Agency | Copied from `freeandiy/assets/icons/vector/` by the rebrand | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | App icon (the angel Andy on the app colour) |
++| `packaging/macos/dmg/` | Free Andy Agency | Copied from `freeandiy/assets/dmg/` by the rebrand | **Not open source**: © Free Andy Agency (`freeandiy/assets/brand/LICENSE-brand.txt`) | DMG background and layout |
+diff --git a/NOTICE b/NOTICE
+index 73e64928..1d16d8b7 100644
+--- a/NOTICE
++++ b/NOTICE
+@@ -3,9 +3,9 @@ Copyright (c) 2026 ArtCraft Team and the VectorCraft contributors.
+ Licensed under the MIT License or the Apache License, Version 2.0, at your option
+ (LICENSE-MIT, LICENSE-APACHE).
+ 
+-The ArtCraft name, wordmark and logos in docs/brand/ are trademarks of the ArtCraft Team. They are
+-not open source and are not covered by the license above; their terms are in
+-docs/brand/LICENSE-brand.txt.
++The ArtCraft name, wordmark and logos are trademarks of the ArtCraft Team. They are not open
++source and are not covered by the license above. As their terms require of modified versions,
++the FreeANDIY fork has removed them (upstream's docs/brand/ directory is not part of this tree).
+ 
+ Third-party material
+ 
+@@ -72,3 +72,26 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++-------------------------------------------------------------------------------------------------
++FreeANDIY Vector
++
++FreeANDIY Vector is a modified version of VectorCraft, made by Free Andy Agency
++(https://freeandy.agency). FreeANDIY is not affiliated with, sponsored or endorsed by the ArtCraft
++Team.
++Modifications Copyright (c) 2026 Free Andy Agency, licensed like VectorCraft under the MIT License
++or the Apache License, Version 2.0, at your option.
++
++Changed files (Apache-2.0 section 4(b)): FreeANDIY's changes are generated from the freeandiy/
++directory by freeandiy/tools/rebrand: the patches in freeandiy/patches/, the text rules in
++freeandiy/rules.toml and the files copied from freeandiy/. Every file that differs from upstream
++VectorCraft is listed by `git diff upstream-main main --stat`, and CHANGELOG-FREEANDIY.md
++summarises the changes. New files carry a "Modified-by: FreeANDIY" header where their format
++allows comments.
++
++The FreeANDIY and Free Andy Agency names, the angel Andy, the lettering, logotypes, seal and app
++icons are protected by copyright, are the property of Free Andy Agency and are NOT covered by
++the licenses above; see freeandiy/assets/brand/LICENSE-brand.txt.
++
++FreeANDIY bundles IBM Plex Sans and IBM Plex Mono (IBM Corp.) and Roboto (The Roboto Project
++Authors) under the SIL Open Font License 1.1; see freeandiy/assets/fonts/OFL-*.txt.
+diff --git a/packaging/env.sh b/packaging/env.sh
+index 8b5391fc..4f52a02d 100644
+--- a/packaging/env.sh
++++ b/packaging/env.sh
+@@ -47,9 +47,12 @@ warn() {
+ # Copy licence and readme files that exist into a package directory.
+ copy_docs() {
+   local dest="$1" f
+-  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ASSETS.md CHANGELOG-FREEANDIY.md; do
+     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
+   done
++  # FreeANDIY: the bundled UI fonts' licences and the brand terms (Apache-2.0 4(d): NOTICE above).
++  cp "$ROOT"/freeandiy/assets/fonts/OFL-*.txt "$dest/"
++  cp "$ROOT/freeandiy/assets/brand/LICENSE-brand.txt" "$dest/LICENSE-FreeANDIY-brand.txt"
+   copy_font_licences "$dest"
+ }
+ 
+diff --git a/xtask/src/assets.rs b/xtask/src/assets.rs
+index 1f3f79d2..edacbd97 100644
+--- a/xtask/src/assets.rs
++++ b/xtask/src/assets.rs
+@@ -46,7 +46,15 @@ pub fn is_asset(path: &str) -> bool {
+ 
+ /// Paths that need an ASSETS.md entry but lack one.
+ pub fn missing(files: &[String], assets_md: &str) -> Vec<String> {
+-    files.iter().filter(|f| is_asset(f) && !assets_md.contains(&format!("`{f}`"))).cloned().collect()
++    files.iter().filter(|f| is_asset(f) && !assets_md.contains(&format!("`{f}`")) && !in_listed_dir(f, assets_md)).cloned().collect()
++}
++
++/// FreeANDIY: the fork's generated asset directories are attributed as a whole (a row for
++/// `` `assets/app-icon/` `` covers every file in it).
++fn in_listed_dir(f: &str, assets_md: &str) -> bool {
++    ["freeandiy/assets/fonts/", "freeandiy/assets/brand/", "freeandiy/assets/icons/", "freeandiy/assets/dmg/", "assets/app-icon/", "packaging/macos/dmg/"]
++        .iter()
++        .any(|d| f.starts_with(d) && assets_md.contains(&format!("`{d}`")))
+ }
+ 
+ pub fn run(root: &Path) -> Result<(), String> {

@@ -1,0 +1,33 @@
+diff --git a/apps/vectorcraft-cli/Cargo.toml b/apps/vectorcraft-cli/Cargo.toml
+index c31998d0..be7688ed 100644
+--- a/apps/vectorcraft-cli/Cargo.toml
++++ b/apps/vectorcraft-cli/Cargo.toml
+@@ -6,8 +6,9 @@ license.workspace = true
+ publish = false
+ description = "VectorCraft command line: MCP server (stdio) and headless batch runs"
+ 
++# FreeANDIY: the executable carries the product name; the package keeps upstream's.
+ [[bin]]
+-name = "vectorcraft-cli"
++name = "freeandiy-vector-cli"
+ path = "src/main.rs"
+ 
+ [lints]
+diff --git a/apps/vectorcraft/Cargo.toml b/apps/vectorcraft/Cargo.toml
+index e0efe056..f6a1cfcd 100644
+--- a/apps/vectorcraft/Cargo.toml
++++ b/apps/vectorcraft/Cargo.toml
+@@ -4,7 +4,12 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ publish = false
+-default-run = "vectorcraft"
++default-run = "freeandiy-vector"
++
++# FreeANDIY: the executable carries the product name; the package keeps upstream's.
++[[bin]]
++name = "freeandiy-vector"
++path = "src/main.rs"
+ 
+ [lints]
+ workspace = true
