@@ -29,11 +29,12 @@ delete = [
   "packaging/macos/dmg",                         # background and layout derived from upstream's icon; ours is copied in
 ]
 
-# Translation catalogs: drop the ArtCraft/Discord entries (the strings are gone from the UI).
+# Translation catalogs: drop the Discord entries (the strings are gone from the UI); other
+# ArtCraft mentions become FreeANDIY below, so complete catalogs stay complete.
 [[drop_lines]]
 include = ["crates/ui-egui/src/i18n/*.tsv"]
-regex = '^[^#\n]*(ArtCraft|Discord|getartcraft)'
-min = 30
+regex = '^[^#\n]*Discord'
+min = 20
 
 # ---------------------------------------------------------------------------------------------
 # Identifiers, maintainers, URLs.
@@ -103,11 +104,20 @@ replace = '"{{this.github}}"'
 min = 3
 
 [[replace]]
-name = "help menu labels (code and catalogs)"
+name = "help menu label: the app page's host (code and catalogs)"
 include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
-find = "VectorCraft on getartcraft.com"
-replace = "{{this.name}} website"
+exclude = ["xtask/**"]
+find = "on getartcraft.com"
+replace = "on freeandiy.freeandy.agency"
+skip_comments = ["//"]
 min = 3
+
+[[replace]]
+name = "catalogs: the app page's host in translations"
+include = ["crates/ui-egui/src/i18n/*.tsv"]
+find = "getartcraft.com"
+replace = "freeandiy.freeandy.agency"
+min = 1
 
 [[replace]]
 name = "help menu: website label (code and catalogs)"
@@ -115,6 +125,13 @@ include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
 regex = 'ArtCraft [Ww]ebsite'
 replace = "{{brand.name}} website"
 min = 3
+
+[[replace]]
+name = "catalogs: other ArtCraft mentions"
+include = ["crates/ui-egui/src/i18n/*.tsv"]
+find = "ArtCraft"
+replace = "{{brand.name}}"
+min = 1
 
 [[replace]]
 name = "upstream issues URL"
@@ -277,8 +294,8 @@ replace = "CARGO_BIN_EXE_{{this.repo}}"
 min = 4
 
 [[replace]]
-name = "cli executable name in code"
-include = ["apps/**/*.rs", "crates/**/*.rs"]
+name = "cli executable name in code and catalogs"
+include = ["apps/**/*.rs", "crates/**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
 regex = '\bvectorcraft-cli\b'
 replace = "{{this.repo}}-cli"
 min = 5

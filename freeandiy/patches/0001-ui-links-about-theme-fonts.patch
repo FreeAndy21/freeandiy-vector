@@ -354,7 +354,7 @@ index d910a655..cd81c7a9 100644
      assert!(!edit.contains(&"edit.preferences".to_string()) && edit.contains(&"edit.keyboardShortcuts".to_string()), "{edit:?}");
      assert!(ids(menu(&mac, "Window")).contains(&"[Workspace]".to_string()));
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
-index 1315d320..bd42cc7d 100644
+index 1315d320..98293599 100644
 --- a/crates/ui-egui/src/theme.rs
 +++ b/crates/ui-egui/src/theme.rs
 @@ -141,7 +141,7 @@ impl Tokens {
@@ -376,35 +376,36 @@ index 1315d320..bd42cc7d 100644
      }
  
      pub fn get(ctx: &egui::Context) -> Tokens {
-@@ -253,20 +254,20 @@ pub fn install_fonts(ctx: &egui::Context) {
+@@ -253,20 +254,24 @@ pub fn install_fonts(ctx: &egui::Context) {
      let add = |f: &mut FontDefinitions, name: &str, bytes: &'static [u8]| {
          f.font_data.insert(name.to_owned(), Arc::new(FontData::from_static(bytes)));
      };
--    add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
--    add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
--    add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
 +    add(&mut fonts, "IBMPlexSans", crate::freeandiy::fonts::sans_regular());
 +    add(&mut fonts, "IBMPlexSans-SemiBold", crate::freeandiy::fonts::sans_semibold());
 +    add(&mut fonts, "IBMPlexMono", crate::freeandiy::fonts::mono_regular());
++    // Upstream's faces right after: they draw the symbols Plex lacks (▾, ●).
+     add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
+     add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
+     add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
      let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
 -    let mut prop = vec!["SourceSans3".to_string()];
-+    let mut prop = vec!["IBMPlexSans".to_string()];
++    let mut prop = vec!["IBMPlexSans".to_string(), "SourceSans3".to_string()];
      prop.extend(fallback.clone());
      fonts.families.insert(FontFamily::Proportional, prop);
 -    let mut semi = vec!["SourceSans3-Semibold".to_string()];
-+    let mut semi = vec!["IBMPlexSans-SemiBold".to_string()];
++    let mut semi = vec!["IBMPlexSans-SemiBold".to_string(), "SourceSans3-Semibold".to_string()];
      semi.extend(fallback.clone());
      fonts.families.insert(FontFamily::Name(FONT_UI_SEMIBOLD.into()), semi);
 -    let mut ui = vec!["SourceSans3".to_string()];
-+    let mut ui = vec!["IBMPlexSans".to_string()];
++    let mut ui = vec!["IBMPlexSans".to_string(), "SourceSans3".to_string()];
      ui.extend(fallback.clone());
      fonts.families.insert(FontFamily::Name(FONT_UI.into()), ui);
 -    let mut mono = vec!["JetBrainsMono".to_string()];
-+    let mut mono = vec!["IBMPlexMono".to_string()];
++    let mut mono = vec!["IBMPlexMono".to_string(), "JetBrainsMono".to_string()];
      mono.extend(fallback);
      fonts.families.insert(FontFamily::Name(FONT_MONO.into()), mono);
      add_craft_fonts(&mut fonts);
-@@ -319,6 +320,7 @@ pub fn apply(ctx: &egui::Context, b: Brightness) {
+@@ -319,6 +324,7 @@ pub fn apply(ctx: &egui::Context, b: Brightness) {
      w.inactive.bg_stroke = Stroke::NONE;
      w.hovered.bg_stroke = Stroke::new(1.0, t.input_border);
      w.active.bg_stroke = Stroke::new(1.0, t.accent);

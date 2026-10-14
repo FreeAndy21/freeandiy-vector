@@ -29,12 +29,9 @@
 	Transform	Transformovať
 	Presets	Predvoľby
 	Preferences	Nastavenia
-	Image	Obraz
 	Variables	Premenné
-	Layer	Vrstva
 	New	Nový
 	Delete	Odstrániť
-	Rasterize	Rastrovať
 	Arrange	Usporiadať
 	Align	Zarovnať
 	Distribute	Rozmiestniť
@@ -85,7 +82,6 @@
 	Color Settings…	Nastavenie farieb…
 	Assign Profile…	Priradiť profil…
 	Keyboard Shortcuts…	Klávesové skratky…
-	Auto Color	Automatické farby
 	Crop	Orezať
 	Trap…	Presah farieb…
 	Create Clipping Mask	Vytvoriť orezovú masku
@@ -94,7 +90,6 @@
 	All	Všetko
 	Deselect	Zrušiť výber
 	Reselect	Znova vybrať
-	All Layers	Všetky vrstvy
 	Save Selection…	Uložiť výber…
 	Proof Colors	Náhľad farieb tlače
 	Gamut Warning	Upozornenie na farebný rozsah
@@ -108,7 +103,6 @@
 	Lock Slices	Zamknúť rezy
 	Grid	Mriežka
 	Guides	Vodidlá
-	Rotate View	Otočiť zobrazenie
 	Actions	Akcie
 	Brushes	Štetce
 	Character	Znak
@@ -145,7 +139,6 @@
 	Apply	Použiť
 	Reset	Obnoviť
 	Create	Vytvoriť
-	Saved	Uložené
 	Error	Chyba
 	Preview	Náhľad
 	Don't Save	Neukladať
@@ -162,23 +155,14 @@
 	Save Preset…	Uložiť predvoľbu…
 	Preset Name	Názov predvoľby
 	PRESET DETAILS	PODROBNOSTI PREDVOĽBY
-	Recent	Nedávne
 	Clear Recent Files	Vymazať nedávne súbory
 	About	O aplikácii
 	Contributors	Prispievatelia
 	Models	Modely
-	8 bit	8-bitový
-	16 bit	16-bitový
-	Amount	Množstvo
-	Contrast	Kontrast
 	Expand…	Rozšíriť…
-	Feather	Prelínanie
 	Feather…	Prelínanie…
 	Selection	Výber
-	Output	Výstup
-	Radius	Polomer
 	Smooth	Vyhladiť
-	Balance	Vyváženie
 	Blue	Modrá
 	Effects	Efekty
 	Global	Globálne
@@ -186,23 +170,16 @@
 	Green	Zelená
 	Hue	Odtieň
 	Light	Svetlo
-	Magenta	Purpurová
 	Open	Otvoriť
-	Orange	Oranžová
-	Purple	Fialová
 	Red	Červená
 	Saturation	Sýtosť
 	Size	Veľkosť
-	Temperature	Teplota
 	Texture	Textúra
-	Tint	Nádych
-	Yellow	Žltá
 	Tolerance	Tolerancia
 
 # Menus and submenus
 	New from Template…	Nový zo šablóny…
 	Open Recent Files	Otvoriť nedávne súbory
-	Recent File	Nedávny súbor
 	Show in Folder	Zobraziť v priečinku
 	Save as Template…	Uložiť ako šablónu…
 	Save as PDF…	Uložiť ako PDF…
@@ -351,7 +328,6 @@
 	Plug-ins	Zásuvné moduly
 	Font	Písmo
 	Recent Fonts	Nedávne písma
-	Recent Font	Nedávne písmo
 	Bold	Tučné
 	Italic	Kurzíva
 	Insert Special Character	Vložiť špeciálny znak
@@ -416,7 +392,6 @@
 	Area Text Objects	Plošné textové objekty
 	Start Global Edit	Spustiť globálnu úpravu
 	Edit Selection…	Upraviť výber…
-	Saved Selection	Uložený výber
 	Outline	Obrysy
 	Overprint Preview	Náhľad pretlače
 	Pixel Preview	Náhľad pixelov
@@ -493,7 +468,7 @@
 	Swatch Libraries	Knižnice vzoriek farieb
 	Symbol Libraries	Knižnice symbolov
 	{{brand.name}} website	Web {{brand.name}}
-	{{this.name}} website	Web {{this.name}}
+	{{this.name}} on freeandiy.freeandy.agency	{{this.name}} na freeandiy.freeandy.agency
 	Search Commands…	Hľadať príkazy…
 	{{this.name}} Help…	Pomocník {{this.name}}…
 
