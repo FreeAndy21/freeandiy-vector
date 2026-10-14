@@ -15,7 +15,7 @@ fn main() -> Result<(), String> {
     res.set_icon("../../assets/app-icon/freeandiy-vector.ico")
         .set("ProductName", "FreeANDIY Vector")
         .set("FileDescription", "FreeANDIY Vector vector illustration editor")
-        .set("CompanyName", "Learning Machines LLC")
+        .set("CompanyName", "Free Andy Agency")
         .set("LegalCopyright", "Copyright (c) Free Andy Agency and the VectorCraft authors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "freeandiy-vector.exe")
         .set("InternalName", "freeandiy-vector");

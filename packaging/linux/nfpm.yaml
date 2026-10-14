@@ -13,7 +13,7 @@ release: 1
 section: graphics
 priority: optional
 maintainer: ${VECTORCRAFT_MAINTAINER}
-vendor: Learning Machines LLC
+vendor: Free Andy Agency
 homepage: https://freeandiy.freeandy.agency/vector
 license: MIT OR Apache-2.0
 description: |-
