@@ -22,10 +22,10 @@ index 34de6ab7..845f259e 100644
      // English as Spanish; every `de-*` locale (`de-DE`, `de-AT`, `de-CH`, `de-LU` …) resolves here.
      LangInfo {
 diff --git a/crates/ui-egui/src/i18n/tests.rs b/crates/ui-egui/src/i18n/tests.rs
-index fc8faae9..322db864 100644
+index fc8faae9..2b7f52ee 100644
 --- a/crates/ui-egui/src/i18n/tests.rs
 +++ b/crates/ui-egui/src/i18n/tests.rs
-@@ -418,8 +418,11 @@ pub fn tl_literals() -> std::collections::BTreeSet<String> {
+@@ -418,15 +418,18 @@ pub fn tl_literals() -> std::collections::BTreeSet<String> {
                  let text = std::fs::read_to_string(&path).unwrap_or_default();
                  let code = text.split("#[cfg(test)]").next().unwrap_or("");
                  let mut rest = code;
@@ -39,3 +39,11 @@ index fc8faae9..322db864 100644
                      let mut end = 0;
                      let bytes = rest.as_bytes();
                      while end < bytes.len() && !(bytes[end] == b'"' && (end == 0 || bytes[end - 1] != b'\\')) {
+                         end += 1;
+                     }
+                     let lit = rest.get(..end).unwrap_or("").replace("\\\"", "\"");
+-                    if rest.get(end + 1..end + 2) == Some(")") {
++                    if rest.get(end + 1..).is_some_and(|after| after.trim_start().starts_with(')')) {
+                         literals.insert(lit);
+                     }
+                 }
