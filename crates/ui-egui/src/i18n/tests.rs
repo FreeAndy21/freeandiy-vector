@@ -418,8 +418,11 @@ pub fn tl_literals() -> std::collections::BTreeSet<String> {
                 let text = std::fs::read_to_string(&path).unwrap_or_default();
                 let code = text.split("#[cfg(test)]").next().unwrap_or("");
                 let mut rest = code;
-                while let Some(at) = rest.find("tl!(\"") {
-                    rest = &rest[at + 5..];
+                // FreeANDIY: rustfmt may break `tl!(` and its literal across lines.
+                while let Some(at) = rest.find("tl!(") {
+                    rest = rest[at + 4..].trim_start();
+                    let Some(r) = rest.strip_prefix('"') else { continue };
+                    rest = r;
                     let mut end = 0;
                     let bytes = rest.as_bytes();
                     while end < bytes.len() && !(bytes[end] == b'"' && (end == 0 || bytes[end - 1] != b'\\')) {
