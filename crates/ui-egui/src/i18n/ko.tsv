@@ -642,6 +642,8 @@
 	Save Swatch Library…	견본 라이브러리 저장…
 	Symbol Libraries	심볼 라이브러리
 	Help	도움말
+	FreeANDIY website	FreeANDIY 웹사이트
+	FreeANDIY Vector on freeandiy.freeandy.agency	freeandiy.freeandy.agency의 FreeANDIY Vector
 	FreeANDIY Vector on GitHub	GitHub의 FreeANDIY Vector
 	Search Commands…	명령 검색…
 	FreeANDIY Vector Help…	FreeANDIY Vector 도움말…
@@ -846,6 +848,7 @@
 	Arrange: Bring to Front	배열: 맨 앞으로 가져오기
 	Arrowheads:	화살촉:
 	Art using a deleted global swatch keeps its colour.	삭제된 글로벌 견본을 사용한 아트워크는 색상을 유지합니다.
+	FreeANDIY website	FreeANDIY 웹사이트
 	Artboard Options	아트보드 옵션
 	Artboard Options: edit with the Artboard tool	아트보드 옵션: 아트보드 도구로 편집
 	Artboard Options…	아트보드 옵션…
@@ -3180,6 +3183,7 @@
 	Packaged {n} file(s){note}	파일 {n}개를 패키지했습니다{note}
 	Page information	페이지 정보
 	Paragraph Style	단락 스타일
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	FreeANDIY의 일부입니다. MIT OR Apache-2.0. 글꼴: Source Sans 3, Inter, JetBrains Mono (OFL). 아이콘: Lucide (ISC) + FreeANDIY Vector.
 	Perspective grid presets	원근 격자 프리셋
 	Phone 390×844	휴대폰 390×844
 	Place onto a new locked, dimmed template layer below the current layer	현재 레이어 아래의 잠기고 흐리게 처리된 새 템플릿 레이어에 배치
@@ -4050,7 +4054,7 @@ theme	Appearance	외관
 @msg	the search couldn't start: try again in a moment	검색을 시작할 수 없습니다: 잠시 후 다시 시도하세요
 @msg	searching a folder isn't available on the web	웹에서는 폴더 검색을 사용할 수 없습니다
 @msg	every search thread stopped on an internal error (please report this bug)	내부 오류로 모든 검색 스레드가 중지되었습니다(이 버그를 신고해 주세요)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	여기에는 FreeANDIY Vector의 글꼴 폴더가 설정되어 있지 않습니다: 데스크톱 앱과 vectorcraft-cli가 설정합니다
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	여기에는 FreeANDIY Vector의 글꼴 폴더가 설정되어 있지 않습니다: 데스크톱 앱과 vectorcraft-cli가 설정합니다
 @msg	choose the font files to add	추가할 글꼴 파일을 선택하세요
 @msg	{n} font file(s) are now in {folder}	글꼴 파일 {n}개가 이제 {folder}에 있습니다
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	글꼴 파일 {n}개가 이제 {folder}에 있으며, {failed}개는 추가할 수 없었습니다: {reason}

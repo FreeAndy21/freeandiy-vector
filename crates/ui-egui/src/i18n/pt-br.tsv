@@ -16,7 +16,7 @@
 # in the infinitive, menus as nouns); no proprietary localisation resource, string table or product
 	Glowing Edges…	Bordas brilhantes…
 # UI was consulted or copied; add entries the same way. Product and technology names (FreeANDIY Vector,
-# ArtCraft, SVG, OpenType, CMYK, Lab ...) stay in Latin letters; the trailing "…" of dialog
+# FreeANDIY, SVG, OpenType, CMYK, Lab ...) stay in Latin letters; the trailing "…" of dialog
 # commands is kept.
 #
 # Coverage: every `tl!` literal and menu string of the shell (tested:
@@ -225,6 +225,8 @@
 	Arrange: Bring to Front	Organizar: Trazer para Frente
 	Arrowheads:	Pontas de Seta:
 	Art using a deleted global swatch keeps its colour.	A arte que usa uma amostra global excluída mantém sua cor.
+	FreeANDIY website	Site do FreeANDIY
+	FreeANDIY website	Site do FreeANDIY
 	Artboard Options	Opções de Mesa de Trabalho
 	Artboard Options: edit with the Artboard tool	Opções de Mesa de Trabalho: edite com a ferramenta Mesa de Trabalho
 	Artboard Options…	Opções de Mesa de Trabalho…
@@ -2613,6 +2615,7 @@
 	FreeANDIY Vector Help…	Ajuda do FreeANDIY Vector…
 	FreeANDIY Vector didn't quit normally last time. These documents had unsaved changes:	O FreeANDIY Vector não fechou normalmente da última vez. Estes documentos tinham alterações não salvas:
 	FreeANDIY Vector on GitHub	FreeANDIY Vector no GitHub
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector em freeandiy.freeandy.agency
 	Vectors	Vetores
 	Version {version} — open-source vector illustration in pure Rust.	Versão {version} — ilustração vetorial de código aberto em Rust puro.
 	Version:	Versão:
@@ -3660,7 +3663,7 @@ axis	Both	Ambos
 @msg	the search couldn't start: try again in a moment	não foi possível iniciar a pesquisa: tente novamente em instantes
 @msg	searching a folder isn't available on the web	pesquisar em uma pasta não está disponível na web
 @msg	every search thread stopped on an internal error (please report this bug)	todos os processos de pesquisa pararam por um erro interno (relate este bug)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	A pasta Fontes do FreeANDIY Vector não está definida aqui: o aplicativo para desktop e o vectorcraft-cli a definem
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	A pasta Fontes do FreeANDIY Vector não está definida aqui: o aplicativo para desktop e o freeandiy-vector-cli a definem
 @msg	choose the font files to add	escolha os arquivos de fonte a adicionar
 @msg	{n} font file(s) are now in {folder}	{n} arquivo(s) de fonte agora está(ão) em {folder}
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} arquivo(s) de fonte agora está(ão) em {folder}; {failed} não pôde(puderam) ser adicionado(s): {reason}

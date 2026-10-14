@@ -263,6 +263,8 @@
 	Artboard:	Bảng vẽ:
 	Artboards	Các bảng vẽ
 	Artboards: {n}	Bảng vẽ: {n}
+	FreeANDIY website	Trang web FreeANDIY
+	FreeANDIY website	Trang web FreeANDIY
 	Artistic	Nghệ thuật
 	Artwork Colors	Màu sắc tác phẩm
 	As Multiple Assets	Thành nhiều asset
@@ -2251,6 +2253,7 @@
 	Paragraph Style Options	Tùy chọn kiểu đoạn văn
 	Paragraph Styles	Kiểu đoạn văn
 	Paragraph Symbol	Ký hiệu đoạn văn
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Một phần của FreeANDIY. MIT OR Apache-2.0. Phông chữ: Source Sans 3, Inter, JetBrains Mono (OFL). Biểu tượng: Lucide (ISC) + FreeANDIY Vector.
 	Password	Mật khẩu
 	Paste	Dán
 	Paste Design	Dán thiết kế
@@ -3537,6 +3540,7 @@
 	FreeANDIY Vector didn't quit normally last time. These documents had unsaved changes:	FreeANDIY Vector không thoát bình thường lần trước. Các tài liệu này có thay đổi chưa lưu:
 	FreeANDIY Vector documents: one locked object, updated when the file changes.	Tài liệu FreeANDIY Vector: một đối tượng bị khóa, cập nhật khi tệp thay đổi.
 	FreeANDIY Vector Help…	Trợ giúp FreeANDIY Vector…
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector trên freeandiy.freeandy.agency
 	FreeANDIY Vector on GitHub	FreeANDIY Vector trên GitHub
 	Vectors	Vector
 	Version	Phiên bản
@@ -4285,7 +4289,7 @@ theme	Appearance	Giao diện
 @msg	FreeANDIY Vector doesn't search other apps' or the system's folders: {path}	FreeANDIY Vector không tìm kiếm trong thư mục của ứng dụng khác hoặc hệ thống: {path}
 @msg	FreeANDIY Vector doesn't search the Shared or Public folder in Users: {path}	FreeANDIY Vector không tìm kiếm thư mục Shared hoặc Public trong Users: {path}
 @msg	FreeANDIY Vector failed to start: {e}	FreeANDIY Vector khởi động thất bại: {e}
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Thư mục Phông chữ của FreeANDIY Vector chưa được đặt ở đây: ứng dụng máy tính và vectorcraft-cli đặt nó
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	Thư mục Phông chữ của FreeANDIY Vector chưa được đặt ở đây: ứng dụng máy tính và freeandiy-vector-cli đặt nó
 @msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	tệp phiên bản {0} không thể nén: chỉ phiên bản {COMPRESSED_SINCE} trở lên mới mở tệp nén
 @msg	width and height are at least 1 pixel	chiều rộng và chiều cao phải ít nhất 1 pixel
 @msg	workspace name can't be empty	tên không gian làm việc không được để trống

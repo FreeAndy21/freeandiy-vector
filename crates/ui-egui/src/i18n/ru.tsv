@@ -226,6 +226,8 @@
 	Artboard {number}	Монтажная область {number}
 	Artboard:	Монтажная область:
 	Artboards	Монтажные области
+	FreeANDIY website	Веб-сайт FreeANDIY
+	FreeANDIY website	Веб-сайт FreeANDIY
 	Artwork Colors	Цвета рисунка
 	As Multiple Assets	Как несколько ресурсов
 	As Single Asset	Как один ресурс
@@ -1999,6 +2001,7 @@
 	Paragraph Style Options	Параметры стиля абзаца
 	Paragraph Styles	Стили абзацев
 	Paragraph Symbol	Символ абзаца
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Часть FreeANDIY. MIT OR Apache-2.0. Шрифты: Source Sans 3, Inter, JetBrains Mono (OFL). Значки: Lucide (ISC) + FreeANDIY Vector.
 	Password	Пароль
 	Paste	Вставить
 	Paste in Back	Вставить позади
@@ -3227,6 +3230,7 @@
 	Vector illustration — fast, open, scriptable.	Векторная иллюстрация — быстрая, открытая, программируемая.
 	FreeANDIY Vector didn't quit normally last time. These documents had unsaved changes:	FreeANDIY Vector не завершился нормально в прошлый раз. В этих документах были несохранённые изменения:
 	FreeANDIY Vector Help…	Справка FreeANDIY Vector…
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector на freeandiy.freeandy.agency
 	FreeANDIY Vector on GitHub	FreeANDIY Vector на GitHub
 	Vectors	Векторы
 	Version {version} — open-source vector illustration in pure Rust.	Версия {version} — векторная иллюстрация с открытым исходным кодом на чистом Rust.
@@ -4053,7 +4057,7 @@ axis	Both	Оба
 @msg	the search couldn't start: try again in a moment	не удалось начать поиск: повторите попытку чуть позже
 @msg	searching a folder isn't available on the web	поиск в папке недоступен в веб-версии
 @msg	every search thread stopped on an internal error (please report this bug)	все потоки поиска остановились из-за внутренней ошибки (сообщите об этой ошибке)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папка Fonts FreeANDIY Vector здесь не задана: её задают настольное приложение и vectorcraft-cli
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	Папка Fonts FreeANDIY Vector здесь не задана: её задают настольное приложение и freeandiy-vector-cli
 @msg	choose the font files to add	выберите файлы шрифтов для добавления
 @msg	{n} font file(s) are now in {folder}	Файлов шрифтов теперь в {folder}: {n}
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	Файлов шрифтов теперь в {folder}: {n}; не удалось добавить {failed}: {reason}

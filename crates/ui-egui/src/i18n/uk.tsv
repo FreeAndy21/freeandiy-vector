@@ -222,6 +222,8 @@
 	Artboard {number}	Монтажна область {number}
 	Artboard:	Монтажна область:
 	Artboards	Монтажні області
+	FreeANDIY website	Веб-сайт FreeANDIY
+	FreeANDIY website	Веб-сайт FreeANDIY
 	Artwork Colors	Кольори малюнка
 	As Multiple Assets	Як кілька ресурсів
 	As Single Asset	Як один ресурс
@@ -1995,6 +1997,7 @@
 	Paragraph Style Options	Параметри стилю абзацу
 	Paragraph Styles	Стилі абзаців
 	Paragraph Symbol	Символ абзацу
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Частина FreeANDIY. MIT OR Apache-2.0. Шрифти: Source Sans 3, Inter, JetBrains Mono (OFL). Значки: Lucide (ISC) + FreeANDIY Vector.
 	Password	Пароль
 	Paste	Вставити
 	Paste in Back	Вставити позаду
@@ -3224,6 +3227,7 @@ effect	Points	Точки
 	Vector illustration — fast, open, scriptable.	Векторне малювання — швидке, відкрите, кероване сценаріями.
 	FreeANDIY Vector didn't quit normally last time. These documents had unsaved changes:	FreeANDIY Vector не завершився нормально минулого разу. У цих документах були незбережені зміни:
 	FreeANDIY Vector Help…	Довідка FreeANDIY Vector…
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector на freeandiy.freeandy.agency
 	FreeANDIY Vector on GitHub	FreeANDIY Vector на GitHub
 	Vectors	Вектори
 	Version {version} — open-source vector illustration in pure Rust.	Версія {version} — векторне малювання з відкритим кодом, написане на Rust.
@@ -4041,7 +4045,7 @@ axis	Both	Обидві
 @msg	the search couldn't start: try again in a moment	не вдалося почати пошук: спробуйте ще раз за мить
 @msg	searching a folder isn't available on the web	пошук у папці недоступний у веб-версії
 @msg	every search thread stopped on an internal error (please report this bug)	усі потоки пошуку зупинилися через внутрішню помилку (повідомте про цю помилку)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папку Fonts FreeANDIY Vector тут не задано: її задають настільна програма та vectorcraft-cli
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	Папку Fonts FreeANDIY Vector тут не задано: її задають настільна програма та freeandiy-vector-cli
 @msg	choose the font files to add	виберіть файли шрифтів для додавання
 @msg	{n} font file(s) are now in {folder}	Файлів шрифтів тепер у {folder}: {n}
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	Файлів шрифтів тепер у {folder}: {n}; не вдалося додати {failed}: {reason}

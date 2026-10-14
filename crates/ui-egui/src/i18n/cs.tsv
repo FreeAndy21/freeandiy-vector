@@ -656,6 +656,8 @@
 	Save Swatch Library…	Uložit knihovnu vzorníku…
 	Symbol Libraries	Knihovny symbolů
 	Help	Nápověda
+	FreeANDIY website	Web FreeANDIY
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector na freeandiy.freeandy.agency
 	FreeANDIY Vector on GitHub	FreeANDIY Vector na GitHubu
 	Search Commands…	Hledat příkazy…
 	FreeANDIY Vector Help…	Nápověda FreeANDIY Vector…
@@ -1827,6 +1829,8 @@ lighting	Light	Světlo
 
 # Dialogs
 	Graphics: {adapter}	Grafika: {adapter}
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Součást FreeANDIY. MIT OR Apache-2.0. Písma: Source Sans 3, Inter, JetBrains Mono (OFL). Ikony: Lucide (ISC) + FreeANDIY Vector.
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono, Noto Sans SC (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Součást FreeANDIY. MIT OR Apache-2.0. Písma: Source Sans 3, Inter, JetBrains Mono, Noto Sans SC (OFL). Ikony: Lucide (ISC) + FreeANDIY Vector.
 	Version {version} — open-source vector illustration in pure Rust.	Verze {version} — open-source vektorová ilustrace v čistém Rustu.
 	Align to Page	Zarovnat ke stránce
 	Smooth Color	Plynulá barva
@@ -3505,6 +3509,7 @@ effect	Regular	Pravidelný
 	Recent Files	Nedávné soubory
 	Vector illustration — fast, open, scriptable.	Vektorová ilustrace — rychlá, otevřená, skriptovatelná.
 	Welcome to FreeANDIY Vector	Vítejte ve FreeANDIY Vector
+	FreeANDIY website	Web FreeANDIY
 	Source code on GitHub	Zdrojový kód na GitHubu
 	All Tools	Všechny nástroje
 	Draw	Kresba
@@ -4348,7 +4353,7 @@ imageTrace	Outline	Obrys
 @msg	the search couldn't start: try again in a moment	hledání nelze spustit: zkuste to za chvíli znovu
 @msg	searching a folder isn't available on the web	prohledávání složky není na webu k dispozici
 @msg	every search thread stopped on an internal error (please report this bug)	všechna vlákna hledání se zastavila na vnitřní chybě (nahlaste prosím tuto chybu)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	složka Fonts FreeANDIY Vector zde není nastavena: nastavuje ji desktopová aplikace a vectorcraft-cli
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	složka Fonts FreeANDIY Vector zde není nastavena: nastavuje ji desktopová aplikace a freeandiy-vector-cli
 @msg	choose the font files to add	vyberte soubory písem, které chcete přidat
 @msg	{n} font file(s) are now in {folder}	soubory písem ({n}) jsou nyní ve složce {folder}
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	soubory písem ({n}) jsou nyní ve složce {folder}; nepodařilo se přidat {failed}: {reason}

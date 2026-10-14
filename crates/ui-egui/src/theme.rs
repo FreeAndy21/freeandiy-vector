@@ -257,17 +257,21 @@ pub fn install_fonts(ctx: &egui::Context) {
     add(&mut fonts, "IBMPlexSans", crate::freeandiy::fonts::sans_regular());
     add(&mut fonts, "IBMPlexSans-SemiBold", crate::freeandiy::fonts::sans_semibold());
     add(&mut fonts, "IBMPlexMono", crate::freeandiy::fonts::mono_regular());
+    // Upstream's faces right after: they draw the symbols Plex lacks (▾, ●).
+    add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
+    add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
+    add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
     let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
-    let mut prop = vec!["IBMPlexSans".to_string()];
+    let mut prop = vec!["IBMPlexSans".to_string(), "SourceSans3".to_string()];
     prop.extend(fallback.clone());
     fonts.families.insert(FontFamily::Proportional, prop);
-    let mut semi = vec!["IBMPlexSans-SemiBold".to_string()];
+    let mut semi = vec!["IBMPlexSans-SemiBold".to_string(), "SourceSans3-Semibold".to_string()];
     semi.extend(fallback.clone());
     fonts.families.insert(FontFamily::Name(FONT_UI_SEMIBOLD.into()), semi);
-    let mut ui = vec!["IBMPlexSans".to_string()];
+    let mut ui = vec!["IBMPlexSans".to_string(), "SourceSans3".to_string()];
     ui.extend(fallback.clone());
     fonts.families.insert(FontFamily::Name(FONT_UI.into()), ui);
-    let mut mono = vec!["IBMPlexMono".to_string()];
+    let mut mono = vec!["IBMPlexMono".to_string(), "JetBrainsMono".to_string()];
     mono.extend(fallback);
     fonts.families.insert(FontFamily::Name(FONT_MONO.into()), mono);
     add_craft_fonts(&mut fonts);

@@ -22,7 +22,7 @@ pub fn github_url() -> String {
 pub fn specs() -> Vec<CommandSpec> {
     vec![
         cmd!(query "help.website", "FreeANDIY website", ["Help"], None, "{} → {url}", always, |_, _| url(WEBSITE_URL.into())),
-        cmd!(query "help.appPage", "FreeANDIY Vector website", ["Help"], None, "{} → {url} this app's page", always, |_, _| url(app_page_url())),
+        cmd!(query "help.appPage", "FreeANDIY Vector on freeandiy.freeandy.agency", ["Help"], None, "{} → {url} this app's page", always, |_, _| url(app_page_url())),
         cmd!(query "help.github", "FreeANDIY Vector on GitHub", ["Help"], None, "{} → {url} source code, issues and releases", always, |_, _| url(github_url())),
         cmd!(query "help.links", "Links", [], None, "{} → {website, appPage, github}", always, |_, _| {
             Ok(json!({ "website": WEBSITE_URL, "appPage": app_page_url(), "github": github_url() }))

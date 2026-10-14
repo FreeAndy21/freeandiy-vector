@@ -228,6 +228,8 @@
 	Artboard {number}	Tavola da disegno {number}
 	Artboard:	Tavola da disegno:
 	Artboards	Tavole da disegno
+	FreeANDIY website	Sito web di FreeANDIY
+	FreeANDIY website	Sito web di FreeANDIY
 	Artwork Colors	Colori della grafica
 	As Multiple Assets	Come più risorse
 	As Single Asset	Come risorsa unica
@@ -2003,6 +2005,7 @@
 	Paragraph Style Options	Opzioni stile paragrafo
 	Paragraph Styles	Stili paragrafo
 	Paragraph Symbol	Segno di paragrafo
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Parte di FreeANDIY. MIT OR Apache-2.0. Font: Source Sans 3, Inter, JetBrains Mono (OFL). Icone: Lucide (ISC) + FreeANDIY Vector.
 	Password	Password
 	Paste	Incolla
 	Paste in Back	Incolla dietro
@@ -3231,6 +3234,7 @@
 	Vector illustration — fast, open, scriptable.	Illustrazione vettoriale — veloce, aperta, programmabile.
 	FreeANDIY Vector didn't quit normally last time. These documents had unsaved changes:	FreeANDIY Vector non si è chiuso correttamente l'ultima volta. Questi documenti avevano modifiche non salvate:
 	FreeANDIY Vector Help…	Aiuto di FreeANDIY Vector…
+	FreeANDIY Vector on freeandiy.freeandy.agency	FreeANDIY Vector su freeandiy.freeandy.agency
 	FreeANDIY Vector on GitHub	FreeANDIY Vector su GitHub
 	Vectors	Vettori
 	Version {version} — open-source vector illustration in pure Rust.	Versione {version} — illustrazione vettoriale open source in puro Rust.
@@ -4057,7 +4061,7 @@ axis	Both	Entrambi
 @msg	the search couldn't start: try again in a moment	impossibile avviare la ricerca: riprova tra un momento
 @msg	searching a folder isn't available on the web	la ricerca in una cartella non è disponibile sul web
 @msg	every search thread stopped on an internal error (please report this bug)	tutti i thread di ricerca si sono fermati per un errore interno (segnala questo bug)
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	La cartella Fonts di FreeANDIY Vector non è impostata qui: la impostano l'app desktop e vectorcraft-cli
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	La cartella Fonts di FreeANDIY Vector non è impostata qui: la impostano l'app desktop e freeandiy-vector-cli
 @msg	choose the font files to add	scegli i file dei font da aggiungere
 @msg	{n} font file(s) are now in {folder}	File di font ora in {folder}: {n}
 @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	File di font ora in {folder}: {n}; impossibile aggiungerne {failed}: {reason}

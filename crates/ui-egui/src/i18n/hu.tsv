@@ -334,6 +334,8 @@
 	Artboard:	Rajztábla:
 	Artboards	Rajztáblák
 	Artboards: {n}	Rajztáblák: {n}
+	FreeANDIY website	Az FreeANDIY webhelye
+	FreeANDIY website	Az FreeANDIY webhelye
 	Artwork Colors	Grafika színei
 	As Multiple Assets	Több elemként
 	As Single Asset	Egy elemként
@@ -2458,6 +2460,8 @@
 	Paragraph Style Options	Bekezdésstílus beállításai
 	Paragraph Styles	Bekezdésstílusok
 	Paragraph Symbol	Bekezdésjel
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Az FreeANDIY része. MIT OR Apache-2.0. Betűtípusok: Source Sans 3, Inter, JetBrains Mono (OFL). Ikonok: Lucide (ISC) + FreeANDIY Vector.
+	Part of FreeANDIY. MIT OR Apache-2.0. Fonts: Source Sans 3, Inter, JetBrains Mono, Noto Sans SC (OFL). Icons: Lucide (ISC) + FreeANDIY Vector.	Az FreeANDIY része. MIT OR Apache-2.0. Betűtípusok: Source Sans 3, Inter, JetBrains Mono, Noto Sans SC (OFL). Ikonok: Lucide (ISC) + FreeANDIY Vector.
 	Password	Jelszó
 	Paste	Beillesztés
 	Paste in Back	Beillesztés mögé
@@ -3869,6 +3873,7 @@
 	FreeANDIY Vector documents: one locked object, updated when the file changes.	FreeANDIY Vector-dokumentumok: egyetlen zárolt objektum, amely a fájl változásakor frissül.
 	FreeANDIY Vector Generic CMYK (SWOP-like)	FreeANDIY Vector általános CMYK (SWOP-szerű)
 	FreeANDIY Vector Help…	FreeANDIY Vector súgó…
+	FreeANDIY Vector on freeandiy.freeandy.agency	A FreeANDIY Vector a freeandiy.freeandy.agency oldalon
 	FreeANDIY Vector on GitHub	A FreeANDIY Vector a GitHubon
 	FreeANDIY Vector Swatches (.vcswatches)	FreeANDIY Vector-színminták (.vcswatches)
 	Vectors	Vektorok
@@ -4645,7 +4650,7 @@ imageTrace	Outline	Körvonal
 @msg	FreeANDIY Vector doesn't search other apps' or the system's folders: {path}	a FreeANDIY Vector nem keres más alkalmazások és a rendszer mappáiban: {path}
 @msg	FreeANDIY Vector doesn't search the Shared or Public folder in Users: {path}	a FreeANDIY Vector nem keres a Users alatti Shared és Public mappában: {path}
 @msg	FreeANDIY Vector failed to start: {e}	A FreeANDIY Vector nem tudott elindulni: {e}
-@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	a FreeANDIY Vector Fonts mappája itt nincs beállítva: az asztali alkalmazás és a vectorcraft-cli állítja be
+@msg	FreeANDIY Vector's Fonts folder isn't set here: the desktop app and freeandiy-vector-cli set it	a FreeANDIY Vector Fonts mappája itt nincs beállítva: az asztali alkalmazás és a freeandiy-vector-cli állítja be
 @msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	ilyen verziójú fájl nem tömöríthető: {0}; tömörített fájlt csak ez a verzió és az újabbak nyitnak meg: {COMPRESSED_SINCE}
 @msg	width and height are at least 1 pixel	a szélesség és a magasság legalább 1 pixel
 @msg	workspace name can't be empty	a munkaterület neve nem lehet üres
