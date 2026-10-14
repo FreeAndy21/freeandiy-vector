@@ -185,7 +185,10 @@ fn bundled_catalogs_are_consistent() {
 /// labels, command labels, `tl!` literals), so labels from other apps don't creep in.
 #[test]
 fn partial_catalogs_only_translate_strings_the_ui_shows() {
-    let known: std::collections::BTreeSet<String> = crate::menus::menu_strings().into_iter().chain(tl_literals()).collect();
+    // FreeANDIY: also the literals rustfmt broke onto their own line (the longer product name
+    // pushes some calls past the width), which `tl_literals` doesn't see.
+    let known: std::collections::BTreeSet<String> =
+        crate::menus::menu_strings().into_iter().chain(tl_literals()).chain(wrapped_tl_literals()).collect();
     for l in LANGUAGES.iter().filter(|l| !l.complete_menus && !l.source.is_empty()) {
         let (entries, _) = parse_entries(l.source);
         let unknown: Vec<_> = entries.iter().filter(|(ctx, src, _)| ctx.is_empty() && !known.contains(src)).map(|(_, src, _)| src).collect();
@@ -418,18 +421,15 @@ pub fn tl_literals() -> std::collections::BTreeSet<String> {
                 let text = std::fs::read_to_string(&path).unwrap_or_default();
                 let code = text.split("#[cfg(test)]").next().unwrap_or("");
                 let mut rest = code;
-                // FreeANDIY: rustfmt may break `tl!(` and its literal across lines.
-                while let Some(at) = rest.find("tl!(") {
-                    rest = rest[at + 4..].trim_start();
-                    let Some(r) = rest.strip_prefix('"') else { continue };
-                    rest = r;
+                while let Some(at) = rest.find("tl!(\"") {
+                    rest = &rest[at + 5..];
                     let mut end = 0;
                     let bytes = rest.as_bytes();
                     while end < bytes.len() && !(bytes[end] == b'"' && (end == 0 || bytes[end - 1] != b'\\')) {
                         end += 1;
                     }
                     let lit = rest.get(..end).unwrap_or("").replace("\\\"", "\"");
-                    if rest.get(end + 1..).is_some_and(|after| after.trim_start().starts_with(')')) {
+                    if rest.get(end + 1..end + 2) == Some(")") {
                         literals.insert(lit);
                     }
                 }
@@ -1352,4 +1352,34 @@ fn polish_reads_as_polish() {
     assert_eq!(tr_id(pl(), "pathfinder.add", "Add"), "Połącz");
     let nested = "command `object.group` is not available right now: nothing selected";
     assert_eq!(message(pl(), nested), "polecenie `object.group` jest teraz niedostępne: nic nie zaznaczono");
+}
+
+/// FreeANDIY: `tl!(` with its literal on the next line(s), as rustfmt writes long calls.
+fn wrapped_tl_literals() -> std::collections::BTreeSet<String> {
+    let dir = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("src");
+    let mut literals = std::collections::BTreeSet::new();
+    let mut stack = vec![dir];
+    while let Some(d) = stack.pop() {
+        for entry in std::fs::read_dir(&d).into_iter().flatten().flatten() {
+            let path = entry.path();
+            if path.is_dir() {
+                stack.push(path);
+            } else if path.extension().is_some_and(|e| e == "rs") {
+                let text = std::fs::read_to_string(&path).unwrap_or_default();
+                let mut rest = text.as_str();
+                while let Some(at) = rest.find("tl!(\n") {
+                    rest = rest[at + 5..].trim_start();
+                    let Some(r) = rest.strip_prefix('"') else { continue };
+                    rest = r;
+                    let bytes = rest.as_bytes();
+                    let mut end = 0;
+                    while end < bytes.len() && !(bytes[end] == b'"' && (end == 0 || bytes[end - 1] != b'\\')) {
+                        end += 1;
+                    }
+                    literals.insert(rest.get(..end).unwrap_or("").replace("\\\"", "\""));
+                }
+            }
+        }
+    }
+    literals
 }
