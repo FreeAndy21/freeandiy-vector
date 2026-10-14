@@ -6,10 +6,10 @@ use std::process::Command;
 
 use serde_json::Value;
 
-const BIN: &str = env!("CARGO_BIN_EXE_vectorcraft-cli");
+const BIN: &str = env!("CARGO_BIN_EXE_freeandiy-vector-cli");
 
 fn tmp(name: &str) -> String {
-    let dir = std::env::temp_dir().join(format!("vectorcraft-cli-fileio-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("freeandiy-vector-cli-fileio-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
     dir.join(name).to_string_lossy().to_string()
 }
@@ -86,7 +86,7 @@ fn help_lists_readable_formats() {
 #[test]
 fn help_lists_perf_deep() {
     let out = ok(&["--help"]);
-    assert!(out.contains("vectorcraft-cli perf [--paths N] [--deep]") && out.contains("--deep also times"), "{out}");
+    assert!(out.contains("freeandiy-vector-cli perf [--paths N] [--deep]") && out.contains("--deep also times"), "{out}");
 }
 
 /// `info` reports the import warnings: an EPS read only up to an error names it.

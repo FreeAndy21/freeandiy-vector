@@ -42,11 +42,11 @@ try {
   # The ordinary pc-windows-msvc standard library requires Windows 10. Rebuild std for win7.
   [Environment]::SetEnvironmentVariable($FlagName, '-C target-feature=+crt-static')
   $env:VECTORCRAFT_REQUIRE_WINRES = '1'
-  $CargoArgs += @('-p', 'vectorcraft', '-p', 'vectorcraft-cli')
+  $CargoArgs += @('-p', 'freeandiy-vector', '-p', 'freeandiy-vector-cli')
   Invoke-Checked { cargo "+$Toolchain" build -Z build-std=std,panic_unwind @CargoArgs --release }
   $TargetDir = if ($env:CARGO_TARGET_DIR) { $env:CARGO_TARGET_DIR } else { 'target' }
   $Bin = Join-Path $TargetDir "$Target\release"
-  foreach ($Name in 'vectorcraft.exe', 'vectorcraft-cli.exe') {
+  foreach ($Name in 'freeandiy-vector.exe', 'freeandiy-vector-cli.exe') {
     $Exe = Join-Path $Bin $Name
     $Bytes = [IO.File]::ReadAllBytes($Exe)
     $Pe = [BitConverter]::ToInt32($Bytes, 0x3c)
@@ -61,10 +61,10 @@ try {
       throw "$Name directly imports a known post-Windows-7 API"
     }
   }
-  Invoke-Checked { & (Join-Path $Bin 'vectorcraft-cli.exe') --version }
+  Invoke-Checked { & (Join-Path $Bin 'freeandiy-vector-cli.exe') --version }
   $Stage = Join-Path $TargetDir ('windows7-portable-' + [Guid]::NewGuid().ToString('N'))
   New-Item -ItemType Directory -Force $Stage | Out-Null
-  Copy-Item (Join-Path $Bin 'vectorcraft.exe'), (Join-Path $Bin 'vectorcraft-cli.exe') $Stage
+  Copy-Item (Join-Path $Bin 'freeandiy-vector.exe'), (Join-Path $Bin 'freeandiy-vector-cli.exe') $Stage
   Copy-Item LICENSE-MIT, LICENSE-APACHE, NOTICE $Stage
   Copy-Item vendor/windows-link/license-mit (Join-Path $Stage 'LICENSE-windows-link-MIT')
   Copy-Item vendor/windows-link/license-apache-2.0 (Join-Path $Stage 'LICENSE-windows-link-Apache-2.0')
@@ -75,7 +75,7 @@ try {
     }
   }
   New-Item -ItemType Directory -Force dist/release | Out-Null
-  $Zip = Join-Path $Root 'dist/release/vectorcraft-windows7-x64-portable.zip'
+  $Zip = Join-Path $Root 'dist/release/freeandiy-vector-windows7-x64-portable.zip'
   Compress-Archive -Path (Join-Path $Stage '*') -DestinationPath $Zip -Force
   Remove-Item -Recurse -Force $Stage
   Get-Item $Zip

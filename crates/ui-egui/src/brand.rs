@@ -1,11 +1,11 @@
-//! The VectorCraft brand mark: the app icon (the engraved dragon, `assets/app-icon/`, see its
-//! README). The PNG carries the icon's rounded corners; it is decoded once per context into a
-//! mipmapped texture, so it stays crisp from the 18 pt app-bar mark to the About box.
+//! The brand mark: the app's monogram tile (`assets/app-icon/`, see its README; FreeANDIY's
+//! square print look). It is decoded once per context into a mipmapped texture, so it stays crisp
+//! from the 18 pt app-bar mark to the About box.
 
 use egui::{Color32, Context, Id, Rect, TextureHandle, TextureOptions, Ui, pos2};
 
 /// 128 px: sharp at 44 pt on a 2× display, and the mipmaps keep 22 pt clean.
-const ICON_PNG: &[u8] = include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png");
+const ICON_PNG: &[u8] = include_bytes!("../../../assets/app-icon/freeandiy-vector-mark.png");
 
 /// The icon's pixels (one transparent pixel if it couldn't be decoded, which a test rules out).
 fn decode() -> egui::ColorImage {
@@ -48,11 +48,11 @@ mod tests {
     use crate::VectorcraftApp;
 
     #[test]
-    fn the_icon_decodes_to_a_rounded_128_px_tile() {
+    fn the_icon_decodes_to_a_square_128_px_tile() {
         let img = decode();
         assert_eq!(img.size, [128, 128]);
-        // Rounded corners: the corner pixel is transparent, the centre opaque.
-        assert_eq!(img.pixels[0].a(), 0);
+        // A square tile: opaque to the corners.
+        assert_eq!(img.pixels[0].a(), 255);
         assert_eq!(img.pixels[64 * 128 + 64].a(), 255);
     }
 

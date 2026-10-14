@@ -141,7 +141,7 @@ impl Tokens {
             axis_y: hex(0x45af63),
             axis_z: hex(0x378ef0),
         };
-        match b {
+        let tokens = match b {
             Brightness::Dark => base,
             // Measured from Illustrator 2026 (plan/illustrator/10-observed-ui.md §1).
             Brightness::MediumDark => Tokens {
@@ -218,7 +218,8 @@ impl Tokens {
                 button: hex(0xe0e0e0),
                 ..base
             },
-        }
+        };
+        crate::freeandiy::tokens(b, tokens)
     }
 
     pub fn get(ctx: &egui::Context) -> Tokens {
@@ -253,20 +254,20 @@ pub fn install_fonts(ctx: &egui::Context) {
     let add = |f: &mut FontDefinitions, name: &str, bytes: &'static [u8]| {
         f.font_data.insert(name.to_owned(), Arc::new(FontData::from_static(bytes)));
     };
-    add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
-    add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
-    add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
+    add(&mut fonts, "IBMPlexSans", crate::freeandiy::fonts::sans_regular());
+    add(&mut fonts, "IBMPlexSans-SemiBold", crate::freeandiy::fonts::sans_semibold());
+    add(&mut fonts, "IBMPlexMono", crate::freeandiy::fonts::mono_regular());
     let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
-    let mut prop = vec!["SourceSans3".to_string()];
+    let mut prop = vec!["IBMPlexSans".to_string()];
     prop.extend(fallback.clone());
     fonts.families.insert(FontFamily::Proportional, prop);
-    let mut semi = vec!["SourceSans3-Semibold".to_string()];
+    let mut semi = vec!["IBMPlexSans-SemiBold".to_string()];
     semi.extend(fallback.clone());
     fonts.families.insert(FontFamily::Name(FONT_UI_SEMIBOLD.into()), semi);
-    let mut ui = vec!["SourceSans3".to_string()];
+    let mut ui = vec!["IBMPlexSans".to_string()];
     ui.extend(fallback.clone());
     fonts.families.insert(FontFamily::Name(FONT_UI.into()), ui);
-    let mut mono = vec!["JetBrainsMono".to_string()];
+    let mut mono = vec!["IBMPlexMono".to_string()];
     mono.extend(fallback);
     fonts.families.insert(FontFamily::Name(FONT_MONO.into()), mono);
     add_craft_fonts(&mut fonts);
@@ -319,6 +320,7 @@ pub fn apply(ctx: &egui::Context, b: Brightness) {
     w.inactive.bg_stroke = Stroke::NONE;
     w.hovered.bg_stroke = Stroke::new(1.0, t.input_border);
     w.active.bg_stroke = Stroke::new(1.0, t.accent);
+    crate::freeandiy::visuals(&mut v);
     ctx.set_visuals(v);
     ctx.global_style_mut(|s| {
         s.spacing.item_spacing = egui::vec2(6.0, 5.0);

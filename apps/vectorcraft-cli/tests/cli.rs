@@ -5,10 +5,10 @@ use std::process::{Command, Stdio};
 
 use serde_json::{Value, json};
 
-const BIN: &str = env!("CARGO_BIN_EXE_vectorcraft-cli");
+const BIN: &str = env!("CARGO_BIN_EXE_freeandiy-vector-cli");
 
 fn tmp(name: &str) -> std::path::PathBuf {
-    let dir = std::env::temp_dir().join(format!("vectorcraft-cli-test-{}", std::process::id()));
+    let dir = std::env::temp_dir().join(format!("freeandiy-vector-cli-test-{}", std::process::id()));
     std::fs::create_dir_all(&dir).unwrap();
     dir.join(name)
 }
@@ -315,7 +315,7 @@ fn mcp_protocol_over_stdio() {
     assert!(messages > 0, "no log records after logging/setLevel: {notes:?}");
 }
 
-/// `vectorcraft-cli commands | head -1` panicked with "failed printing to
+/// `freeandiy-vector-cli commands | head -1` panicked with "failed printing to
 /// stdout: Broken pipe (os error 32)" and exit status 101.
 #[test]
 fn closed_stdout_ends_quietly() {
@@ -329,7 +329,7 @@ fn closed_stdout_ends_quietly() {
     assert!(out.status.success() && !err.contains("panicked"), "{:?}: {err}", out.status);
 }
 
-/// #1005: `run` whose reader has gone (`vectorcraft-cli run … | true`) ends quietly with status 0,
+/// #1005: `run` whose reader has gone (`freeandiy-vector-cli run … | true`) ends quietly with status 0,
 /// and its later steps still run; a failing step still fails.
 #[test]
 fn run_with_a_closed_stdout_ends_quietly_and_finishes_the_batch() {

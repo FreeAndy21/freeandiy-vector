@@ -6,8 +6,9 @@ license.workspace = true
 publish = false
 description = "VectorCraft command line: MCP server (stdio) and headless batch runs"
 
+# FreeANDIY: the executable carries the product name; the package keeps upstream's.
 [[bin]]
-name = "vectorcraft-cli"
+name = "freeandiy-vector-cli"
 path = "src/main.rs"
 
 [lints]

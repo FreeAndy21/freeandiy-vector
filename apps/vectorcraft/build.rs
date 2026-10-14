@@ -6,19 +6,19 @@
 
 fn main() -> Result<(), String> {
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-changed=../../assets/app-icon/vectorcraft.ico");
+    println!("cargo:rerun-if-changed=../../assets/app-icon/freeandiy-vector.ico");
     println!("cargo:rerun-if-env-changed=VECTORCRAFT_REQUIRE_WINRES");
     if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("windows") {
         return Ok(());
     }
     let mut res = winresource::WindowsResource::new();
-    res.set_icon("../../assets/app-icon/vectorcraft.ico")
-        .set("ProductName", "VectorCraft")
-        .set("FileDescription", "VectorCraft vector illustration editor")
+    res.set_icon("../../assets/app-icon/freeandiy-vector.ico")
+        .set("ProductName", "FreeANDIY Vector")
+        .set("FileDescription", "FreeANDIY Vector vector illustration editor")
         .set("CompanyName", "Learning Machines LLC")
-        .set("LegalCopyright", "Copyright (c) the VectorCraft authors. MIT OR Apache-2.0.")
-        .set("OriginalFilename", "vectorcraft.exe")
-        .set("InternalName", "vectorcraft");
+        .set("LegalCopyright", "Copyright (c) Free Andy Agency and the VectorCraft authors. MIT OR Apache-2.0.")
+        .set("OriginalFilename", "freeandiy-vector.exe")
+        .set("InternalName", "freeandiy-vector");
     if let Err(e) = res.compile() {
         if std::env::var_os("VECTORCRAFT_REQUIRE_WINRES").is_some() {
             return Err(format!("embedding Windows resources failed: {e}"));

@@ -325,7 +325,7 @@ impl Headless {
             "app.export" => self.export(p),
             "app.quit" => Ok(Value::Null),
             m if m.starts_with("ui.") => {
-                Err(format!("`{m}` needs the desktop app (start `vectorcraft --control 7979` and use `vectorcraft-cli mcp --connect`)"))
+                Err(format!("`{m}` needs the desktop app (start `vectorcraft --control 7979` and use `freeandiy-vector-cli mcp --connect`)"))
             }
             other => Err(format!("unknown method `{other}`")),
         }
