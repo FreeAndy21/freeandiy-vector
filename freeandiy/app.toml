@@ -20,3 +20,8 @@ ci_tests = "true"
 # in string literals (git pathspecs, space-separated).
 allow = ""
 rs_exclude = ":!xtask/**"
+
+[msi]
+# Windows Installer component GUIDs beyond branding.toml's (new, so FreeANDIY never shares an
+# installed component with VectorCraft). Never change them once released.
+shortcut_guid = "4771930D-4C29-475C-B6B1-7061C41752D5"

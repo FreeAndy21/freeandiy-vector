@@ -319,10 +319,24 @@ replace = "{{this.repo}}"
 min = 80
 
 [[replace]]
-name = "MSI UpgradeCode and component GUID (new GUIDs)"
+name = "MSI UpgradeCode (new GUID)"
 include = ["packaging/windows/*.wxs"]
 regex = 'UpgradeCode="[0-9A-Fa-f-]{36}"'
 replace = 'UpgradeCode="{{this.msi_upgrade_code}}"'
+min = 1
+
+[[replace]]
+name = "MSI app component GUID (new GUID)"
+include = ["packaging/windows/*.wxs"]
+find = "0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103"
+replace = "{{this.msi_component_guid}}"
+min = 1
+
+[[replace]]
+name = "MSI desktop shortcut component GUID (new GUID)"
+include = ["packaging/windows/*.wxs"]
+find = "498F2D4C-E655-47F6-B406-2D4C449B8D26"
+replace = "{{msi.shortcut_guid}}"
 min = 1
 
 # ---------------------------------------------------------------------------------------------
