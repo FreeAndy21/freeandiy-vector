@@ -122,8 +122,8 @@ min = 1
 [[replace]]
 name = "help menu: website label (code and catalogs)"
 include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
-regex = 'ArtCraft [Ww]ebsite'
-replace = "{{brand.name}} website"
+regex = 'ArtCraft ([Ww])ebsite'
+replace = "{{brand.name}} ${1}ebsite"
 min = 3
 
 [[replace]]
