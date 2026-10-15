@@ -267,6 +267,13 @@ replace = "{{this.name}}"
 min = 0
 
 [[replace]]
+name = "protect: the EPS native-data markers (%VectorCraft_BeginData/EndData: a file format, read by both apps)"
+include = ["**/*.rs"]
+regex = 'VectorCraft_(Begin|End)Data'
+replace = '@@VCDATA@@_${1}Data'
+min = 4
+
+[[replace]]
 name = "product name VectorCraft (Rust code, not comments)"
 include = ["**/*.rs"]
 exclude = ["xtask/**"]
@@ -493,3 +500,10 @@ include = ["packaging/**", "apps/*/build.rs"]
 find = "Learning Machines LLC"
 replace = "{{brand.owner}}"
 min = 1
+
+[[replace]]
+name = "restore the EPS native-data markers"
+include = ["**/*.rs"]
+find = "@@VCDATA@@"
+replace = "VectorCraft"
+min = 4
