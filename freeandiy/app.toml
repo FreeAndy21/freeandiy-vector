@@ -15,6 +15,10 @@ web_env = ""
 # Upstream has no test workflow of its own: freeandiy.yml runs build.tests on Linux.
 ci_tests = "true"
 
+# Extra arguments after the test filter. A paste-fuzz test hits a panic inside the hayro PDF parser
+# on some random inputs (FreeAndy21/freeandiy#1).
+test_args = "-- --skip pasted_pdf_never_panics"
+
 [check]
 # check-branding.sh: extra allowed strings (regex) and Rust paths where the upstream name may stay
 # in string literals (git pathspecs, space-separated).
