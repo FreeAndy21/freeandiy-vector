@@ -409,14 +409,14 @@ fn the_native_document_and_thumbnail_come_back() {
         assert_eq!(image::load_from_memory(&png).unwrap().to_rgba8().dimensions(), (3, 2));
         let ps = text(&out);
         checked_page(&ps);
-        assert!(ps.find("%FreeANDIY Vector_BeginData: thumbnail").unwrap() < ps.find("%%BeginProlog").unwrap());
-        assert!(ps.find("%FreeANDIY Vector_BeginData: native").unwrap() > ps.find("%%Trailer").unwrap());
+        assert!(ps.find("%VectorCraft_BeginData: thumbnail").unwrap() < ps.find("%%BeginProlog").unwrap());
+        assert!(ps.find("%VectorCraft_BeginData: native").unwrap() > ps.find("%%Trailer").unwrap());
         assert!(ps.lines().all(|l| l.len() <= 255));
     }
     let plain = export(&d, &opts(&d), None, None).unwrap();
     assert_eq!((super::native(&plain.bytes), super::thumbnail(&plain.bytes)), (None, None));
     // Damaged files give nothing back.
-    assert_eq!(super::native(b"%FreeANDIY Vector_BeginData: native\n% 9jqo^\n%FreeANDIY Vector_EndData\n"), None);
+    assert_eq!(super::native(b"%VectorCraft_BeginData: native\n% 9jqo^\n%VectorCraft_EndData\n"), None);
     let mut bad = vec![0xC5, 0xD0, 0xD3, 0xC6];
     bad.extend([0xFF; 26]);
     assert_eq!(sections(&bad), None);

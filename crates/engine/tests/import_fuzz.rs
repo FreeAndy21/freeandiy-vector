@@ -1404,7 +1404,7 @@ proptest! {
 /// PostScript is read.
 fn foreign_eps_sample() -> Vec<u8> {
     let mut bytes = eps_sample();
-    let marker = b"%FreeANDIY Vector_BeginData: native";
+    let marker = b"%VectorCraft_BeginData: native";
     let at = bytes.windows(marker.len()).position(|w| w == marker).unwrap();
     bytes[at + marker.len() - 1] = b'x';
     bytes

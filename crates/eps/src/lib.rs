@@ -239,8 +239,8 @@ pub fn export(doc: &Document, opts: &EpsOptions, preview: Option<&Raster>, thumb
 
 /// Comment lines that start a data section the file carries (`%VectorCraft_BeginData: <name>`)
 /// and end it; between them, ASCII85 lines after `% `.
-const BEGIN_DATA: &str = "%FreeANDIY Vector_BeginData: ";
-const END_DATA: &str = "%FreeANDIY Vector_EndData";
+const BEGIN_DATA: &str = "%VectorCraft_BeginData: ";
+const END_DATA: &str = "%VectorCraft_EndData";
 /// The data sections.
 const NATIVE: &str = "native";
 const THUMBNAIL: &str = "thumbnail";
