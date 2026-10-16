@@ -50,6 +50,7 @@
 
     <Feature Id="Main" Title="FreeANDIY Vector" Level="1">
       <ComponentGroupRef Id="VectorcraftFiles" />
+      <ComponentGroupRef Id="FreeandiyNotices" />
       <ComponentRef Id="DesktopShortcut" />
     </Feature>
 
@@ -133,5 +134,12 @@
           Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
       <RegistryValue Root="HKLM" Key="Software\FreeANDIY Vector" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
     </Component>
+  </Fragment>
+  <!-- FreeANDIY: licences, NOTICE, attribution, font licences and brand terms (Apache-2.0 4(d)),
+       staged by package.ps1. -->
+  <Fragment>
+    <ComponentGroup Id="FreeandiyNotices" Directory="INSTALLFOLDER">
+      <Files Include="$(var.NoticesDir)\*" />
+    </ComponentGroup>
   </Fragment>
 </Wix>
