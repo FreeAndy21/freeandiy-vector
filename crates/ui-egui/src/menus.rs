@@ -2707,7 +2707,7 @@ pub fn menu_tree_named(english_names: bool) -> Vec<(&'static str, Vec<Item>)> {
             "Help",
             vec![
                 c("FreeANDIY Website", "help.website"),
-                c("FreeANDIY Vector on freeandiy.freeandy.agency", "help.appPage"),
+                c("FreeANDIY Vector on freeandiy-web.vercel.app", "help.appPage"),
                 c("FreeANDIY Vector on GitHub", "help.github"),
                 Sep,
                 c("Search Commands…", "help.commandPalette"),

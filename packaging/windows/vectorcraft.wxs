@@ -33,8 +33,8 @@
 
     <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
     <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
-    <Property Id="ARPURLINFOABOUT" Value="https://freeandiy.freeandy.agency/vector" />
-    <Property Id="ARPURLUPDATEINFO" Value="https://freeandiy.freeandy.agency/vector" />
+    <Property Id="ARPURLINFOABOUT" Value="https://freeandiy-web.vercel.app/vector" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://freeandiy-web.vercel.app/vector" />
     <Property Id="ARPHELPLINK" Value="https://github.com/FreeAndy21/freeandiy-vector/issues" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">

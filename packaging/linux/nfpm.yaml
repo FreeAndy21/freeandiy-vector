@@ -14,7 +14,7 @@ section: graphics
 priority: optional
 maintainer: ${VECTORCRAFT_MAINTAINER}
 vendor: Free Andy Agency
-homepage: https://freeandiy.freeandy.agency/vector
+homepage: https://freeandiy-web.vercel.app/vector
 license: MIT OR Apache-2.0
 description: |-
   Open-source, native vector illustration app.

@@ -14,7 +14,7 @@ use egui::{Color32, Context, Id, TextureHandle, TextureOptions, Ui, Visuals};
 use crate::theme::{Brightness, Tokens};
 
 pub const APP_NAME: &str = "FreeANDIY Vector";
-pub const APP_PAGE: &str = "https://freeandiy.freeandy.agency/vector";
+pub const APP_PAGE: &str = "https://freeandiy-web.vercel.app/vector";
 pub const GITHUB: &str = "https://github.com/FreeAndy21/freeandiy-vector";
 pub const OWNER: &str = "Free Andy Agency";
 pub const UPSTREAM_NAME: &str = "VectorCraft";
