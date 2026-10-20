@@ -108,7 +108,7 @@ name = "help menu label: the app page's host (code and catalogs)"
 include = ["**/*.rs", "crates/ui-egui/src/i18n/*.tsv"]
 exclude = ["xtask/**"]
 find = "on getartcraft.com"
-replace = "on freeandiy.freeandy.agency"
+replace = "on {{brand.website_host}}"
 skip_comments = ["//"]
 min = 3
 
@@ -116,7 +116,7 @@ min = 3
 name = "catalogs: the app page's host in translations"
 include = ["crates/ui-egui/src/i18n/*.tsv"]
 find = "getartcraft.com"
-replace = "freeandiy.freeandy.agency"
+replace = "{{brand.website_host}}"
 min = 1
 
 [[replace]]

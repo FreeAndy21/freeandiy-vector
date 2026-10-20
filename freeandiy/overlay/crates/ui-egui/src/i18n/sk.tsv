@@ -469,7 +469,7 @@
 	Symbol Libraries	Knižnice symbolov
 	{{brand.name}} website	Web {{brand.name}}
 	{{brand.name}} Website	Web {{brand.name}}
-	{{this.name}} on freeandiy.freeandy.agency	{{this.name}} na freeandiy.freeandy.agency
+	{{this.name}} on {{brand.website_host}}	{{this.name}} na {{brand.website_host}}
 	Search Commands…	Hľadať príkazy…
 	{{this.name}} Help…	Pomocník {{this.name}}…
 
